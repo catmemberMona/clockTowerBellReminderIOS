@@ -20,9 +20,6 @@ class ViewController: UIViewController {
         buONOFFBTN.layer.cornerRadius = 15
         buONOFFBTN.layer.borderWidth = 1.5
         buONOFFBTN.layer.borderColor = UIColor.clear.cgColor
-        
-      
-        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -41,15 +38,15 @@ class ViewController: UIViewController {
                 if self.buttonStatus == false {
                     self.turnOnAlarm();
                     DispatchQueue.main.async {
-                        sender.backgroundColor = blueColor;
-                        sender.setTitleColor(yellowColor, for: .normal)
+                        sender.backgroundColor = yellowColor;
+                        sender.setTitleColor(blueColor, for: .normal)
                         sender.setTitle("Turn Off", for: .normal)
                     }
                 } else {
                     self.turnOffReminder();
                     DispatchQueue.main.async {
-                        sender.backgroundColor = yellowColor;
-                        sender.setTitleColor(blueColor, for: .normal)
+                        sender.backgroundColor = blueColor;
+                        sender.setTitleColor(yellowColor, for: .normal)
                         sender.setTitle("Turn On", for: .normal)
                     }
                 }
@@ -74,7 +71,51 @@ class ViewController: UIViewController {
             // set content the notification will display
             let content = UNMutableNotificationContent()
             content.title = "\(i % 12) O'clock"
-            content.sound = .default
+            var soundName = UNNotificationSoundName("clock-bell-one.wav");
+            
+            switch i % 12 {
+            case 1:
+                soundName = UNNotificationSoundName("clock-bell-one.wav")
+                break
+            case 2:
+                soundName = UNNotificationSoundName("clock-bell-two.wav")
+                break
+                
+            case 3:
+                soundName = UNNotificationSoundName("clock-bell-three.wav")
+                break
+            case 4:
+                soundName = UNNotificationSoundName("clock-bell-four.wav")
+                break
+            case 5:
+                soundName = UNNotificationSoundName("clock-bell-five.wav")
+                break
+            case 6:
+                soundName = UNNotificationSoundName("clock-bell-six.wav")
+                break
+            case 7:
+                soundName = UNNotificationSoundName("clock-bell-seven.wav")
+                break
+            case 8:
+                soundName = UNNotificationSoundName("clock-bell-eight.wav")
+                break
+            case 9:
+                soundName = UNNotificationSoundName("clock-bell-nine.wav")
+                break
+            case 10:
+                soundName = UNNotificationSoundName("clock-bell-ten.wav")
+                break
+            case 11:
+                soundName = UNNotificationSoundName("clock-bell-eleven.wav")
+                break
+            case 0:
+                soundName = UNNotificationSoundName("clock-bell-twelve.wav")
+                break
+            default:
+                soundName = UNNotificationSoundName("clock-bell-one.wav")
+                break
+            }
+            content.sound = UNNotificationSound(named: soundName)
             
             // request takes in content to display notification and trigger requirement
             // id needed to turn off alarm?
@@ -83,7 +124,7 @@ class ViewController: UIViewController {
                 if error != nil {
                     print("SOMETHING WENT WRONG WITH NOTIFICATION REQUEST")
                 } else {
-//                    print("THIS WAS SUCCESSFUL, Notified at \(i % 12)")
+                    print("THIS WAS SUCCESSFUL, Notified at \(i % 12)")
                 }
             })
         }
