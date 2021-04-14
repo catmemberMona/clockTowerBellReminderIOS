@@ -1,0 +1,598 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F9AEE3D8261FD9710086B0BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AEE3D7261FD9710086B0BA /* AppDelegate.swift */; };
+		F9AEE3DA261FD9710086B0BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AEE3D9261FD9710086B0BA /* SceneDelegate.swift */; };
+		F9AEE3DC261FD9710086B0BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AEE3DB261FD9710086B0BA /* ViewController.swift */; };
+		F9AEE3DF261FD9710086B0BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9AEE3DD261FD9710086B0BA /* Main.storyboard */; };
+		F9AEE3E1261FD9720086B0BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9AEE3E0261FD9720086B0BA /* Assets.xcassets */; };
+		F9AEE3E4261FD9720086B0BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9AEE3E2261FD9720086B0BA /* LaunchScreen.storyboard */; };
+		F9AEE3EF261FD9720086B0BA /* ClockTowerBellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AEE3EE261FD9720086B0BA /* ClockTowerBellTests.swift */; };
+		F9AEE3FA261FD9720086B0BA /* ClockTowerBellUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AEE3F9261FD9720086B0BA /* ClockTowerBellUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F9AEE3EB261FD9720086B0BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F9AEE3CC261FD9710086B0BA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F9AEE3D3261FD9710086B0BA;
+			remoteInfo = ClockTowerBell;
+		};
+		F9AEE3F6261FD9720086B0BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F9AEE3CC261FD9710086B0BA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F9AEE3D3261FD9710086B0BA;
+			remoteInfo = ClockTowerBell;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F9AEE3D4261FD9710086B0BA /* ClockTowerBell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClockTowerBell.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9AEE3D7261FD9710086B0BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F9AEE3D9261FD9710086B0BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F9AEE3DB261FD9710086B0BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F9AEE3DE261FD9710086B0BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F9AEE3E0261FD9720086B0BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F9AEE3E3261FD9720086B0BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F9AEE3E5261FD9720086B0BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9AEE3EA261FD9720086B0BA /* ClockTowerBellTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClockTowerBellTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9AEE3EE261FD9720086B0BA /* ClockTowerBellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTowerBellTests.swift; sourceTree = "<group>"; };
+		F9AEE3F0261FD9720086B0BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9AEE3F5261FD9720086B0BA /* ClockTowerBellUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClockTowerBellUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9AEE3F9261FD9720086B0BA /* ClockTowerBellUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTowerBellUITests.swift; sourceTree = "<group>"; };
+		F9AEE3FB261FD9720086B0BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F9AEE3D1261FD9710086B0BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9AEE3E7261FD9720086B0BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9AEE3F2261FD9720086B0BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F9AEE3CB261FD9710086B0BA = {
+			isa = PBXGroup;
+			children = (
+				F9AEE3D6261FD9710086B0BA /* ClockTowerBell */,
+				F9AEE3ED261FD9720086B0BA /* ClockTowerBellTests */,
+				F9AEE3F8261FD9720086B0BA /* ClockTowerBellUITests */,
+				F9AEE3D5261FD9710086B0BA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F9AEE3D5261FD9710086B0BA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F9AEE3D4261FD9710086B0BA /* ClockTowerBell.app */,
+				F9AEE3EA261FD9720086B0BA /* ClockTowerBellTests.xctest */,
+				F9AEE3F5261FD9720086B0BA /* ClockTowerBellUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F9AEE3D6261FD9710086B0BA /* ClockTowerBell */ = {
+			isa = PBXGroup;
+			children = (
+				F9AEE3D7261FD9710086B0BA /* AppDelegate.swift */,
+				F9AEE3D9261FD9710086B0BA /* SceneDelegate.swift */,
+				F9AEE3DB261FD9710086B0BA /* ViewController.swift */,
+				F9AEE3DD261FD9710086B0BA /* Main.storyboard */,
+				F9AEE3E0261FD9720086B0BA /* Assets.xcassets */,
+				F9AEE3E2261FD9720086B0BA /* LaunchScreen.storyboard */,
+				F9AEE3E5261FD9720086B0BA /* Info.plist */,
+			);
+			path = ClockTowerBell;
+			sourceTree = "<group>";
+		};
+		F9AEE3ED261FD9720086B0BA /* ClockTowerBellTests */ = {
+			isa = PBXGroup;
+			children = (
+				F9AEE3EE261FD9720086B0BA /* ClockTowerBellTests.swift */,
+				F9AEE3F0261FD9720086B0BA /* Info.plist */,
+			);
+			path = ClockTowerBellTests;
+			sourceTree = "<group>";
+		};
+		F9AEE3F8261FD9720086B0BA /* ClockTowerBellUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F9AEE3F9261FD9720086B0BA /* ClockTowerBellUITests.swift */,
+				F9AEE3FB261FD9720086B0BA /* Info.plist */,
+			);
+			path = ClockTowerBellUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F9AEE3D3261FD9710086B0BA /* ClockTowerBell */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9AEE3FE261FD9720086B0BA /* Build configuration list for PBXNativeTarget "ClockTowerBell" */;
+			buildPhases = (
+				F9AEE3D0261FD9710086B0BA /* Sources */,
+				F9AEE3D1261FD9710086B0BA /* Frameworks */,
+				F9AEE3D2261FD9710086B0BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ClockTowerBell;
+			productName = ClockTowerBell;
+			productReference = F9AEE3D4261FD9710086B0BA /* ClockTowerBell.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F9AEE3E9261FD9720086B0BA /* ClockTowerBellTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9AEE401261FD9720086B0BA /* Build configuration list for PBXNativeTarget "ClockTowerBellTests" */;
+			buildPhases = (
+				F9AEE3E6261FD9720086B0BA /* Sources */,
+				F9AEE3E7261FD9720086B0BA /* Frameworks */,
+				F9AEE3E8261FD9720086B0BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F9AEE3EC261FD9720086B0BA /* PBXTargetDependency */,
+			);
+			name = ClockTowerBellTests;
+			productName = ClockTowerBellTests;
+			productReference = F9AEE3EA261FD9720086B0BA /* ClockTowerBellTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F9AEE3F4261FD9720086B0BA /* ClockTowerBellUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9AEE404261FD9720086B0BA /* Build configuration list for PBXNativeTarget "ClockTowerBellUITests" */;
+			buildPhases = (
+				F9AEE3F1261FD9720086B0BA /* Sources */,
+				F9AEE3F2261FD9720086B0BA /* Frameworks */,
+				F9AEE3F3261FD9720086B0BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F9AEE3F7261FD9720086B0BA /* PBXTargetDependency */,
+			);
+			name = ClockTowerBellUITests;
+			productName = ClockTowerBellUITests;
+			productReference = F9AEE3F5261FD9720086B0BA /* ClockTowerBellUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F9AEE3CC261FD9710086B0BA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					F9AEE3D3261FD9710086B0BA = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					F9AEE3E9261FD9720086B0BA = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = F9AEE3D3261FD9710086B0BA;
+					};
+					F9AEE3F4261FD9720086B0BA = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = F9AEE3D3261FD9710086B0BA;
+					};
+				};
+			};
+			buildConfigurationList = F9AEE3CF261FD9710086B0BA /* Build configuration list for PBXProject "ClockTowerBell" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F9AEE3CB261FD9710086B0BA;
+			productRefGroup = F9AEE3D5261FD9710086B0BA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F9AEE3D3261FD9710086B0BA /* ClockTowerBell */,
+				F9AEE3E9261FD9720086B0BA /* ClockTowerBellTests */,
+				F9AEE3F4261FD9720086B0BA /* ClockTowerBellUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F9AEE3D2261FD9710086B0BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9AEE3E4261FD9720086B0BA /* LaunchScreen.storyboard in Resources */,
+				F9AEE3E1261FD9720086B0BA /* Assets.xcassets in Resources */,
+				F9AEE3DF261FD9710086B0BA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9AEE3E8261FD9720086B0BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9AEE3F3261FD9720086B0BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F9AEE3D0261FD9710086B0BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9AEE3DC261FD9710086B0BA /* ViewController.swift in Sources */,
+				F9AEE3D8261FD9710086B0BA /* AppDelegate.swift in Sources */,
+				F9AEE3DA261FD9710086B0BA /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9AEE3E6261FD9720086B0BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9AEE3EF261FD9720086B0BA /* ClockTowerBellTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9AEE3F1261FD9720086B0BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9AEE3FA261FD9720086B0BA /* ClockTowerBellUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F9AEE3EC261FD9720086B0BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F9AEE3D3261FD9710086B0BA /* ClockTowerBell */;
+			targetProxy = F9AEE3EB261FD9720086B0BA /* PBXContainerItemProxy */;
+		};
+		F9AEE3F7261FD9720086B0BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F9AEE3D3261FD9710086B0BA /* ClockTowerBell */;
+			targetProxy = F9AEE3F6261FD9720086B0BA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F9AEE3DD261FD9710086B0BA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F9AEE3DE261FD9710086B0BA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F9AEE3E2261FD9720086B0BA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F9AEE3E3261FD9720086B0BA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F9AEE3FC261FD9720086B0BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F9AEE3FD261FD9720086B0BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F9AEE3FF261FD9720086B0BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YSD89CWF5Y;
+				INFOPLIST_FILE = ClockTowerBell/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SaltyYan.ClockTowerBell;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F9AEE400261FD9720086B0BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YSD89CWF5Y;
+				INFOPLIST_FILE = ClockTowerBell/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SaltyYan.ClockTowerBell;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F9AEE402261FD9720086B0BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YSD89CWF5Y;
+				INFOPLIST_FILE = ClockTowerBellTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SaltyYan.ClockTowerBellTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClockTowerBell.app/ClockTowerBell";
+			};
+			name = Debug;
+		};
+		F9AEE403261FD9720086B0BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YSD89CWF5Y;
+				INFOPLIST_FILE = ClockTowerBellTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SaltyYan.ClockTowerBellTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClockTowerBell.app/ClockTowerBell";
+			};
+			name = Release;
+		};
+		F9AEE405261FD9720086B0BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YSD89CWF5Y;
+				INFOPLIST_FILE = ClockTowerBellUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SaltyYan.ClockTowerBellUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ClockTowerBell;
+			};
+			name = Debug;
+		};
+		F9AEE406261FD9720086B0BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YSD89CWF5Y;
+				INFOPLIST_FILE = ClockTowerBellUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = SaltyYan.ClockTowerBellUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ClockTowerBell;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F9AEE3CF261FD9710086B0BA /* Build configuration list for PBXProject "ClockTowerBell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9AEE3FC261FD9720086B0BA /* Debug */,
+				F9AEE3FD261FD9720086B0BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F9AEE3FE261FD9720086B0BA /* Build configuration list for PBXNativeTarget "ClockTowerBell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9AEE3FF261FD9720086B0BA /* Debug */,
+				F9AEE400261FD9720086B0BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F9AEE401261FD9720086B0BA /* Build configuration list for PBXNativeTarget "ClockTowerBellTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9AEE402261FD9720086B0BA /* Debug */,
+				F9AEE403261FD9720086B0BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F9AEE404261FD9720086B0BA /* Build configuration list for PBXNativeTarget "ClockTowerBellUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9AEE405261FD9720086B0BA /* Debug */,
+				F9AEE406261FD9720086B0BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F9AEE3CC261FD9710086B0BA /* Project object */;
+}
