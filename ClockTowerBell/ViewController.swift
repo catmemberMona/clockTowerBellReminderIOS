@@ -41,15 +41,15 @@ class ViewController: UIViewController {
                 if self.buttonStatus == false {
                     self.turnOnAlarm();
                     DispatchQueue.main.async {
-                        sender.backgroundColor = blueColor;
-                        sender.setTitleColor(yellowColor, for: .normal)
+                        sender.backgroundColor = yellowColor;
+                        sender.setTitleColor(blueColor, for: .normal)
                         sender.setTitle("Turn Off", for: .normal)
                     }
                 } else {
                     self.turnOffReminder();
                     DispatchQueue.main.async {
-                        sender.backgroundColor = yellowColor;
-                        sender.setTitleColor(blueColor, for: .normal)
+                        sender.backgroundColor = blueColor;
+                        sender.setTitleColor(yellowColor, for: .normal)
                         sender.setTitle("Turn On", for: .normal)
                     }
                 }
@@ -74,7 +74,9 @@ class ViewController: UIViewController {
             // set content the notification will display
             let content = UNMutableNotificationContent()
             content.title = "\(i % 12) O'clock"
-            content.sound = .default
+            // custom sound
+            let soundName = UNNotificationSoundName("clock-bell-one.wav");
+            content.sound = UNNotificationSound(named: soundName)
             
             // request takes in content to display notification and trigger requirement
             // id needed to turn off alarm?

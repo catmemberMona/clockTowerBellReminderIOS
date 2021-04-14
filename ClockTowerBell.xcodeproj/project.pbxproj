@@ -15,6 +15,7 @@
 		F9AEE3E4261FD9720086B0BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9AEE3E2261FD9720086B0BA /* LaunchScreen.storyboard */; };
 		F9AEE3EF261FD9720086B0BA /* ClockTowerBellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AEE3EE261FD9720086B0BA /* ClockTowerBellTests.swift */; };
 		F9AEE3FA261FD9720086B0BA /* ClockTowerBellUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AEE3F9261FD9720086B0BA /* ClockTowerBellUITests.swift */; };
+		F9E1DF2E2627952000774C00 /* clock-bell-one.wav in Resources */ = {isa = PBXBuildFile; fileRef = F9E1DF2D2627952000774C00 /* clock-bell-one.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		F9AEE3F5261FD9720086B0BA /* ClockTowerBellUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClockTowerBellUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9AEE3F9261FD9720086B0BA /* ClockTowerBellUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTowerBellUITests.swift; sourceTree = "<group>"; };
 		F9AEE3FB261FD9720086B0BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9E1DF2D2627952000774C00 /* clock-bell-one.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "clock-bell-one.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		F9AEE3D6261FD9710086B0BA /* ClockTowerBell */ = {
 			isa = PBXGroup;
 			children = (
+				F9E1DF2D2627952000774C00 /* clock-bell-one.wav */,
 				F9AEE3D7261FD9710086B0BA /* AppDelegate.swift */,
 				F9AEE3D9261FD9710086B0BA /* SceneDelegate.swift */,
 				F9AEE3DB261FD9710086B0BA /* ViewController.swift */,
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9AEE3E4261FD9720086B0BA /* LaunchScreen.storyboard in Resources */,
+				F9E1DF2E2627952000774C00 /* clock-bell-one.wav in Resources */,
 				F9AEE3E1261FD9720086B0BA /* Assets.xcassets in Resources */,
 				F9AEE3DF261FD9710086B0BA /* Main.storyboard in Resources */,
 			);
