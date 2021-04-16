@@ -64,16 +64,22 @@ class ViewController: UIViewController {
     
     func turnOnAlarm(){
         // set reminder for every hour during the day from 11am to 11pm
-        for i in 1...59 {
+        for i in 11...23 {
             // set the time
             var date = DateComponents();
-            date.minute = i;
-//            print("THE DATE Hour: ", date)
+            date.hour = i;
+            print("THE DATE Hour: ", date)
             let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
             
             // set content the notification will display
             let content = UNMutableNotificationContent()
-            content.title = "\(i % 12) O'clock"
+            let time:Int?
+            if i % 12 == 0 {
+                time = 12;
+            } else {
+                time = i % 12;
+            }
+            content.title = "It is \(time!) O'clock"
             // custom sound
             let soundName = UNNotificationSoundName("clock-bell-one.wav");
             content.sound = UNNotificationSound(named: soundName)
@@ -85,7 +91,7 @@ class ViewController: UIViewController {
                 if error != nil {
                     print("SOMETHING WENT WRONG WITH NOTIFICATION REQUEST")
                 } else {
-//                    print("THIS WAS SUCCESSFUL, Notified at \(i % 12)")
+                    print("THIS WAS SUCCESSFUL, Notified at \(i % 12)")
                 }
             })
         }
