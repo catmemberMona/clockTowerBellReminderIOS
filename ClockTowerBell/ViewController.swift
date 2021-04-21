@@ -11,17 +11,32 @@ import UserNotifications
 class ViewController: UIViewController {
 
     @IBOutlet weak var buONOFFBTN: UIButton!
+    let yellowColor = UIColor.init(red: 255/255, green: 236/255, blue: 149/255, alpha: 1.0);
+    let blueColor = UIColor.init(red: 40/255, green: 74/255, blue: 119/255, alpha: 1.0);
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        buONOFFBTN.setTitle("Turn On", for: .normal)
+        // retrieve on/off state when app is reopened,
+        // starts out false if it is the first time app is being used
+        let defaults = UserDefaults.standard
+        let buttonStatus = defaults.bool(forKey: "buttonState")
+        if buttonStatus != false && buttonStatus != true {
+            defaults.set(false, forKey: "buttonState")
+            buONOFFBTN.setTitle("Turn On", for: .normal)
+        } else if buttonStatus == true {
+            showOn(btn:buONOFFBTN)
+        } else if buttonStatus == false {
+            showOff(btn: buONOFFBTN)
+        }
+        
         // styling for on/off Button
         buONOFFBTN.layer.cornerRadius = 15
         buONOFFBTN.layer.borderWidth = 1.5
         buONOFFBTN.layer.borderColor = UIColor.clear.cgColor
         
-      
+
+        
         
     }
     
@@ -30,31 +45,28 @@ class ViewController: UIViewController {
     }
     
     // ACTION FOR WHEN THE BUTTON IS PRESSED
-    var buttonStatus = false;
     @IBAction func buOnOffBtn(_ sender: UIButton) {
-        let yellowColor = UIColor.init(red: 255/255, green: 236/255, blue: 149/255, alpha: 1.0);
-        let blueColor = UIColor.init(red: 40/255, green: 74/255, blue: 119/255, alpha: 1.0);
+        let defaults = UserDefaults.standard
+        let buttonState = defaults.bool(forKey: "buttonState")
+        
         // request permission to send notifications and alert
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {success, error in
             if success {
                 // set notifications or remove notifications
-                if self.buttonStatus == false {
+                // show corresponding UI
+                if buttonState == false {
                     self.turnOnAlarm();
                     DispatchQueue.main.async {
-                        sender.backgroundColor = blueColor;
-                        sender.setTitleColor(yellowColor, for: .normal)
-                        sender.setTitle("Turn Off", for: .normal)
+                        self.showOn(btn:sender);
                     }
                 } else {
                     self.turnOffReminder();
                     DispatchQueue.main.async {
-                        sender.backgroundColor = yellowColor;
-                        sender.setTitleColor(blueColor, for: .normal)
-                        sender.setTitle("Turn On", for: .normal)
+                        self.showOff(btn:sender);
                     }
                 }
-                self.buttonStatus = !self.buttonStatus;
-                print(self.buttonStatus)
+                defaults.set(!buttonState, forKey: "buttonState")
+                print(defaults.bool(forKey: "buttonState"))
                 
             } else if error != nil {
                 print("there is an error")
@@ -62,19 +74,40 @@ class ViewController: UIViewController {
         })
     }
     
+    // show the UI corresponding to the state of the notifications
+    func showOn(btn:UIButton){
+        btn.backgroundColor = self.yellowColor;
+        btn.setTitleColor(blueColor, for: .normal)
+        btn.setTitle("Turn Off", for: .normal)
+    }
+    
+    func showOff(btn:UIButton){
+        btn.backgroundColor = blueColor;
+        btn.setTitleColor(yellowColor, for: .normal)
+        btn.setTitle("Turn On", for: .normal)
+    }
+        
     func turnOnAlarm(){
         // set reminder for every hour during the day from 11am to 11pm
-        for i in 1...59 {
+        for i in 11...23 {
             // set the time
             var date = DateComponents();
-            date.minute = i;
+            date.hour = i;
 //            print("THE DATE Hour: ", date)
             let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
             
             // set content the notification will display
             let content = UNMutableNotificationContent()
-            content.title = "\(i % 12) O'clock"
-            content.sound = .default
+            let time:Int?
+            if i % 12 == 0 {
+                time = 12;
+            } else {
+                time = i % 12;
+            }
+            content.title = "It is \(time!) O'clock"
+            // custom sound
+            let soundName = UNNotificationSoundName("clock-bell-one.wav");
+            content.sound = UNNotificationSound(named: soundName)
             
             // request takes in content to display notification and trigger requirement
             // id needed to turn off alarm?
@@ -83,7 +116,7 @@ class ViewController: UIViewController {
                 if error != nil {
                     print("SOMETHING WENT WRONG WITH NOTIFICATION REQUEST")
                 } else {
-//                    print("THIS WAS SUCCESSFUL, Notified at \(i % 12)")
+                    print("THIS WAS SUCCESSFUL, Notified at \(i % 12)")
                 }
             })
         }
