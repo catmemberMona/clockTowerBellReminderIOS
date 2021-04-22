@@ -98,7 +98,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     }
                 }
                 defaults.set(!buttonState, forKey: "buttonState")
-                print(defaults.bool(forKey: "buttonState"))
+//                print(defaults.bool(forKey: "buttonState"))
                 
             } else if error != nil {
                 print("there is an error")
@@ -221,6 +221,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         } else {
             lastBellMilitaryTime = hourTime
         }
+        
+        turnOffReminder()
+        turnOnAlarm()	
         
     }
 }
