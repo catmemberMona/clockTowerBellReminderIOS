@@ -17,6 +17,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     // VARIBALES FOR SETTING THE DAILY START AND END TIMES
     var timePicker = UIPickerView()
+    @IBOutlet weak var dailyBellMessage: UILabel!
     @IBOutlet weak var firstBellText: UITextField!
     @IBOutlet weak var lastBellText: UITextField!
     var activeField: UITextField?
@@ -46,9 +47,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // set default for daily start / end time
         if firstBellText.text == "" {
             firstBellText.text = "11 AM"
+            timePicker.selectRow(10, inComponent: 0, animated: true)
         }
         if lastBellText.text == "" {
             lastBellText.text = "11 PM"
+            timePicker.selectRow(10, inComponent: 1, animated: true)
         }
         
         
@@ -84,6 +87,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // request permission to send notifications and alert
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {success, error in
             if success {
+                if self.firstBellMilitaryTime > self.lastBellMilitaryTime {
+                    return
+                }
                 // set notifications or remove notifications
                 // show corresponding UI
                 if buttonState == false {
@@ -222,8 +228,22 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             lastBellMilitaryTime = hourTime
         }
         
-        turnOffReminder()
-        turnOnAlarm()	
+        warningForBellTime()
+    
         
+    }
+    
+    func warningForBellTime(){
+        if firstBellMilitaryTime <= lastBellMilitaryTime {
+            turnOffReminder()
+            turnOnAlarm()
+            if dailyBellMessage.textColor == UIColor.red {
+                dailyBellMessage.textColor = UIColor.lightGray
+                dailyBellMessage.text = "Set Daily Bells"
+            }
+        } else {
+            dailyBellMessage.text = "Warning: Last Bell is set to a time before the first bell."
+            dailyBellMessage.textColor = UIColor.red
+        }
     }
 }
