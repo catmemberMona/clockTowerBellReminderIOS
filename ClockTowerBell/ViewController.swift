@@ -10,7 +10,7 @@ import UserNotifications
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
-    // SET ON/OFF Button properties
+    // VARIABLES FOR SET ON/OFF Button
     @IBOutlet weak var buONOFFBTN: UIButton!
     let yellowColor = UIColor.init(red: 255/255, green: 236/255, blue: 149/255, alpha: 1.0);
     let blueColor = UIColor.init(red: 40/255, green: 74/255, blue: 119/255, alpha: 1.0);
@@ -22,10 +22,13 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     var activeField: UITextField?
     let amOrPm = ["AM", "PM"]
     let hour = [1,2,3,4,5,6,7,8,9,10,11,12]
-    // first saved bell
-    var hourTime:Int!
-    var timeOfDay:String!
-    // last saved bell
+    // Hour saved
+    var hourTime = 11
+    var timeOfDay = ""
+    // first and last hour saved
+    // default time used is 11am to 11pm
+    var firstBellMilitaryTime = 11
+    var lastBellMilitaryTime = 23
    
     
     override func viewDidLoad() {
@@ -39,6 +42,16 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // set VC as picker view delegate
         timePicker.delegate = self
         timePicker.dataSource = self
+        
+        // set default for daily start / end time
+        if firstBellText.text == "" {
+            firstBellText.text = "11 AM"
+        }
+        if lastBellText.text == "" {
+            lastBellText.text = "11 PM"
+        }
+        
+        
         
         // retrieve on/off state when app is reopened,
         // starts out false if it is the first time app is being used
@@ -108,22 +121,16 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
     func turnOnAlarm(){
         // set reminder for every hour during the day from 11am to 11pm
-        for i in 11...23 {
+        for i in firstBellMilitaryTime...lastBellMilitaryTime {
             // set the time
             var date = DateComponents();
             date.hour = i;
-//            print("THE DATE Hour: ", date)
             let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
             
             // set content the notification will display
             let content = UNMutableNotificationContent()
-            let time:Int?
-            if i % 12 == 0 {
-                time = 12;
-            } else {
-                time = i % 12;
-            }
-            content.title = "It is \(time!) O'clock"
+            let time = i % 12 == 0 ? 12 : i % 12
+            content.title = "It is \(time) O'clock"
             // custom sound
             let soundName = UNNotificationSoundName("clock-bell-one.wav");
             content.sound = UNNotificationSound(named: soundName)
@@ -135,7 +142,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 if error != nil {
                     print("SOMETHING WENT WRONG WITH NOTIFICATION REQUEST")
                 } else {
-                    print("THIS WAS SUCCESSFUL, Notified at \(i % 12)")
+                    print("THIS WAS SUCCESSFUL, Notified at \(time)")
                 }
             })
         }
@@ -194,13 +201,26 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("ROW", row, "Component", component)
         if component == 0 {
             hourTime = hour[row]
-        } else {
-            timeOfDay = amOrPm[row];
         }
-        activeField?.text = "\(String(hourTime)) " + timeOfDay
+        if component == 1 {
+            timeOfDay = amOrPm[row]
+        }
+        let time = hourTime % 12 == 0 ? 12 : hourTime % 12
+        activeField?.text = "\(String(time)) " + timeOfDay
+        
+        // adjust time to military time
+        if timeOfDay == "PM" {
+            hourTime = hourTime + 12
+        }
+        
+        // Update start and/or end bell times
+        if activeField?.accessibilityIdentifier == "firstBellTextField" {
+            firstBellMilitaryTime = hourTime
+        } else {
+            lastBellMilitaryTime = hourTime
+        }
         
     }
 }
