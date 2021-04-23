@@ -23,13 +23,13 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     var activeField: UITextField?
     let amOrPm = ["AM", "PM"]
     let hour = [1,2,3,4,5,6,7,8,9,10,11,12]
-    // Hour saved
-    var hourTime = 11
-    var timeOfDay = ""
+
     // first and last hour saved
     // default time used is 11am to 11pm
-    var firstBellMilitaryTime = 11
-    var lastBellMilitaryTime = 23
+    var firstBellTime = 11
+    var firstBellAmOrPmIndex = 0
+    var lastBellTime = 11
+    var lastBellAmOrPmIndex = 1
    
     
     override func viewDidLoad() {
@@ -87,7 +87,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // request permission to send notifications and alert
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {success, error in
             if success {
-                if self.firstBellMilitaryTime > self.lastBellMilitaryTime {
+                // determine military time
+                let tempBellTime = self.lastBellAmOrPmIndex == 1 ? self.lastBellTime + 12 : self.lastBellTime
+                if self.firstBellTime > tempBellTime {
                     return
                 }
                 // set notifications or remove notifications
@@ -127,7 +129,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
     func turnOnAlarm(){
         // set reminder for every hour during the day from 11am to 11pm
-        for i in firstBellMilitaryTime...lastBellMilitaryTime {
+        let tempBellTime = lastBellAmOrPmIndex == 1 ? lastBellTime + 12 : lastBellTime
+        for i in firstBellTime...tempBellTime {
             // set the time
             var date = DateComponents();
             date.hour = i;
@@ -199,42 +202,63 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
-    // show bell times and edit the textfield that was selected
+    // show bell times
+    // edit the textfield that was selected using
+    // the picker view
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
         activeField = textField
+       
+        if activeField?.accessibilityIdentifier == "firstBellTextField" {
+       
+            let timeIndex = firstBellTime-1
+            timePicker.selectRow(timeIndex, inComponent: 0, animated: true)
+            timePicker.selectRow(firstBellAmOrPmIndex, inComponent: 1, animated: true)
+        } else {
+    
+            let timeIndex = lastBellTime-1
+            timePicker.selectRow(timeIndex, inComponent: 0, animated: true)
+            timePicker.selectRow(lastBellAmOrPmIndex, inComponent: 1, animated: true)
+        }
+        
         createTimePicker()
         return true
     }
     
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if component == 0 {
-            hourTime = hour[row]
-        }
-        if component == 1 {
-            timeOfDay = amOrPm[row]
-        }
-        let time = hourTime % 12 == 0 ? 12 : hourTime % 12
-        activeField?.text = "\(String(time)) " + timeOfDay
+        var time:Int?
         
-        // adjust time to military time
-        if timeOfDay == "PM" {
-            hourTime = hourTime + 12
-        }
-        
-        // Update start and/or end bell times
+        // Update start and/or end bell times and
+        // update active text field
         if activeField?.accessibilityIdentifier == "firstBellTextField" {
-            firstBellMilitaryTime = hourTime
+            if component == 0 {
+                firstBellTime = hour[row]
+                time = firstBellTime % 12 == 0 ? 12 : firstBellTime % 12
+            }
+            if component == 1 {
+                firstBellAmOrPmIndex = row
+                time = firstBellTime
+            }
+            activeField?.text = "\(String(time!)) " + amOrPm[firstBellAmOrPmIndex]
         } else {
-            lastBellMilitaryTime = hourTime
+            if component == 0 {
+                lastBellTime = hour[row]
+                time = lastBellTime % 12 == 0 ? 12 : lastBellTime % 12
+            }
+            if component == 1 {
+                lastBellAmOrPmIndex = row
+                time = lastBellTime
+            }
+            activeField?.text = "\(String(time!)) " + amOrPm[lastBellAmOrPmIndex]
         }
         
+        // check if the bell times set is vaild
         warningForBellTime()
-    
-        
     }
     
     func warningForBellTime(){
-        if firstBellMilitaryTime <= lastBellMilitaryTime {
+        let tempBellTime = lastBellAmOrPmIndex == 1 ? lastBellTime + 12 : lastBellTime
+        if firstBellTime <= tempBellTime {
             turnOffReminder()
             turnOnAlarm()
             if dailyBellMessage.textColor == UIColor.red {
