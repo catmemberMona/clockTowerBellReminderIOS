@@ -37,6 +37,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        // save data
+        let defaults = UserDefaults.standard
         
         // Set up for the daily start and end time picker view
         // set VC as textfield's delegate
@@ -46,21 +48,47 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         timePicker.delegate = self
         timePicker.dataSource = self
         
+        // retrieve first and last bell times when app is reopened,
+        // starts out as 11am and 11pm if it is the first time app is being used
+        let firstBellHour: Int = defaults.integer(forKey: "firstBellHour")
+        let firstBellAmOrPm: Int = defaults.integer(forKey: "firstBellAmOrPM")
+        let lastBellHour: Int = defaults.integer(forKey: "lastBellHour")
+        let lastBellAmOrPm: Int = defaults.integer(forKey: "lastBellAmOrPm")
+        
+        if firstBellHour == 0 {
+            defaults.set(firstBellTime, forKey: "firstBellHour")
+        } else {
+            firstBellTime = firstBellHour
+        }
+        if firstBellAmOrPm == 0 {
+            defaults.set(firstBellAmOrPmIndex, forKey: "firstBellAmOrPm")
+        } else {
+            firstBellAmOrPmIndex = firstBellAmOrPm
+        }
+        if lastBellHour == 0 {
+            defaults.set(lastBellTime, forKey: "lastBellHour")
+        } else {
+            lastBellTime = lastBellHour
+        }
+        if lastBellAmOrPm == 0 {
+            defaults.set(lastBellAmOrPmIndex, forKey: "lastBellAmOrPm")
+        } else {
+            lastBellAmOrPmIndex = lastBellAmOrPm
+        }
+        
+        
         // set default for daily start / end time
         if firstBellText.text == "" {
-            firstBellText.text = "11 AM"
-            timePicker.selectRow(10, inComponent: 0, animated: true)
+            firstBellText.text = "\(firstBellTime) \(amOrPm[firstBellAmOrPmIndex])"
         }
         if lastBellText.text == "" {
-            lastBellText.text = "11 PM"
-            timePicker.selectRow(10, inComponent: 1, animated: true)
+            lastBellText.text = "\(lastBellTime) \(amOrPm[lastBellAmOrPmIndex])"
         }
         
         
         
         // retrieve on/off state when app is reopened,
         // starts out false if it is the first time app is being used
-        let defaults = UserDefaults.standard
         let buttonStatus = defaults.bool(forKey: "buttonState")
         if buttonStatus != false && buttonStatus != true {
             defaults.set(false, forKey: "buttonState")
@@ -229,6 +257,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var time:Int?
+        let defaults = UserDefaults.standard
         
         // Update start and/or end bell times and
         // update active text field
@@ -257,6 +286,18 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // check if the bell times set is vaild
         validBellTimes = checkForVaildBellTimes()
         warningForBellTime()
+        
+        // update saved time for when user reopens closed app
+        if validBellTimes && activeField?.accessibilityIdentifier == "firstBellTextField" {
+            component == 0 ?
+                defaults.set(firstBellTime, forKey: "firstBellHour") :
+                defaults.set(firstBellAmOrPmIndex, forKey: "firstBellAmOrPm")
+            
+        } else if validBellTimes {
+            component == 0 ?
+                defaults.set(lastBellTime, forKey: "lastBellHour") :
+                defaults.set(lastBellAmOrPmIndex, forKey: "lastBellAmOrPm")
+        }
     }
     
     func warningForBellTime(){
