@@ -30,6 +30,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     var firstBellAmOrPmIndex = 0
     var lastBellTime = 11
     var lastBellAmOrPmIndex = 1
+    
+    var validBellTimes = true
    
     
     override func viewDidLoad() {
@@ -88,8 +90,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {success, error in
             if success {
                 // determine military time
-                let tempBellTime = self.lastBellAmOrPmIndex == 1 ? self.lastBellTime + 12 : self.lastBellTime
-                if self.firstBellTime > tempBellTime {
+                if !self.validBellTimes {
                     return
                 }
                 // set notifications or remove notifications
@@ -129,8 +130,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
     func turnOnAlarm(){
         // set reminder for every hour during the day from 11am to 11pm
-        let tempBellTime = lastBellAmOrPmIndex == 1 ? lastBellTime + 12 : lastBellTime
-        for i in firstBellTime...tempBellTime {
+        let tempLastBellTime = getMilitaryTime(normalTime: lastBellTime, index: lastBellAmOrPmIndex )
+        let tempFirstBellTime = getMilitaryTime(normalTime: firstBellTime, index: firstBellAmOrPmIndex )
+        for i in tempFirstBellTime...tempLastBellTime {
             // set the time
             var date = DateComponents();
             date.hour = i;
@@ -253,12 +255,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
         
         // check if the bell times set is vaild
+        validBellTimes = checkForVaildBellTimes()
         warningForBellTime()
     }
     
     func warningForBellTime(){
-        let tempBellTime = lastBellAmOrPmIndex == 1 ? lastBellTime + 12 : lastBellTime
-        if firstBellTime <= tempBellTime {
+        if validBellTimes {
             turnOffReminder()
             turnOnAlarm()
             if dailyBellMessage.textColor == UIColor.red {
@@ -269,5 +271,18 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             dailyBellMessage.text = "Warning: Last Bell is set to a time before the first bell."
             dailyBellMessage.textColor = UIColor.red
         }
+    }
+    
+    func checkForVaildBellTimes()->Bool{
+        let tempLastBellTime = getMilitaryTime(normalTime: lastBellTime, index: lastBellAmOrPmIndex )
+        let tempFirstBellTime = getMilitaryTime(normalTime: firstBellTime, index: firstBellAmOrPmIndex )
+        if tempFirstBellTime > tempLastBellTime {
+            return false
+        }
+        return true
+    }
+    
+    func getMilitaryTime(normalTime:Int, index:Int)->Int{
+        return (index == 1) ? normalTime + 12 : normalTime
     }
 }
