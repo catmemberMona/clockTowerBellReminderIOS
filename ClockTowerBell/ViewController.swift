@@ -31,7 +31,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     var lastBellTime = 11
     var lastBellAmOrPmIndex = 1
     
-    var validBellTimes = true
+    var isRollOverBells = false
    
     
     override func viewDidLoad() {
@@ -117,14 +117,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // request permission to send notifications and alert
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {success, error in
             if success {
-                // determine military time
-                if !self.validBellTimes {
-                    return
-                }
                 // set notifications or remove notifications
                 // show corresponding UI
                 if buttonState == false {
-                    self.turnOnAlarm();
+                    self.determineIfSettingRollOverBells()
                     DispatchQueue.main.async {
                         self.showOn(btn:sender);
                     }
@@ -156,11 +152,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         btn.setTitle("Turn On", for: .normal)
     }
         
-    func turnOnAlarm(){
+    func turnOnAlarm(tempFirstBellTime:Int, tempLastBellTime:Int){
         // set reminder for every hour during the day from 11am to 11pm
-        let tempLastBellTime = getMilitaryTime(normalTime: lastBellTime, index: lastBellAmOrPmIndex )
-        let tempFirstBellTime = getMilitaryTime(normalTime: firstBellTime, index: firstBellAmOrPmIndex )
-        for i in tempFirstBellTime...tempLastBellTime {
+        for i in tempFirstBellTime...tempLastBellTime { // max range would be 0 - 23
             // set the time
             var date = DateComponents();
             date.hour = i;
@@ -168,7 +162,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             
             // set content the notification will display
             let content = UNMutableNotificationContent()
-            let time = i % 12 == 0 ? 12 : i % 12
+            let time = i
             content.title = "It is \(time) O'clock"
             // custom sound
             let soundName = UNNotificationSoundName("clock-bell-one.wav");
@@ -181,7 +175,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 if error != nil {
                     print("SOMETHING WENT WRONG WITH NOTIFICATION REQUEST")
                 } else {
-                    print("THIS WAS SUCCESSFUL, Notified at \(time)")
+                    print("THIS WAS SUCCESSFUL, Notified at military hour \(time)")
                 }
             })
         }
@@ -284,46 +278,55 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
         
         // check if the bell times set is vaild
-        validBellTimes = checkForVaildBellTimes()
-        warningForBellTime()
+        isRollOverBells = checkForRollOverBellTimes()
+        determineIfSettingRollOverBells()
         
         // update saved time for when user reopens closed app
-        if validBellTimes && activeField?.accessibilityIdentifier == "firstBellTextField" {
+        if activeField?.accessibilityIdentifier == "firstBellTextField" {
             component == 0 ?
                 defaults.set(firstBellTime, forKey: "firstBellHour") :
                 defaults.set(firstBellAmOrPmIndex, forKey: "firstBellAmOrPm")
             
-        } else if validBellTimes {
+        } else if activeField?.accessibilityIdentifier == "lastBellTextField" {
             component == 0 ?
                 defaults.set(lastBellTime, forKey: "lastBellHour") :
                 defaults.set(lastBellAmOrPmIndex, forKey: "lastBellAmOrPm")
         }
     }
     
-    func warningForBellTime(){
-        if validBellTimes {
-            turnOffReminder()
-            turnOnAlarm()
-            if dailyBellMessage.textColor == UIColor.red {
-                dailyBellMessage.textColor = UIColor.lightGray
-                dailyBellMessage.text = "Set Daily Bells"
-            }
+    func determineIfSettingRollOverBells(){
+        turnOffReminder()
+        let tempLastBellTime = getMilitaryTime(normalTime: lastBellTime, index: lastBellAmOrPmIndex )
+        let tempFirstBellTime = getMilitaryTime(normalTime: firstBellTime, index: firstBellAmOrPmIndex )
+        if !isRollOverBells {
+            turnOnAlarm(tempFirstBellTime: tempFirstBellTime, tempLastBellTime: tempLastBellTime)
         } else {
-            dailyBellMessage.text = "Warning: Last Bell is set to a time before the first bell."
-            dailyBellMessage.textColor = UIColor.red
+            turnOnAlarm(tempFirstBellTime: tempFirstBellTime, tempLastBellTime: 23)
+            turnOnAlarm(tempFirstBellTime: 0, tempLastBellTime: tempLastBellTime)
         }
+        
     }
     
-    func checkForVaildBellTimes()->Bool{
+    func checkForRollOverBellTimes()->Bool{
         let tempLastBellTime = getMilitaryTime(normalTime: lastBellTime, index: lastBellAmOrPmIndex )
         let tempFirstBellTime = getMilitaryTime(normalTime: firstBellTime, index: firstBellAmOrPmIndex )
         if tempFirstBellTime > tempLastBellTime {
-            return false
+            return true
         }
-        return true
+        return false
     }
     
     func getMilitaryTime(normalTime:Int, index:Int)->Int{
+        // differentiate midnight and noon
+        if normalTime == 12 {
+            if index == 0 {
+                return 0   // midnight
+            }
+            
+            if index == 1 {
+                return 12 // for noon
+            }
+        }
         return (index == 1) ? normalTime + 12 : normalTime
     }
 }
