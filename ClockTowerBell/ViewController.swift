@@ -27,9 +27,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     // first and last hour saved
     // default time used is 11am to 11pm
     var firstBellTime = 11
-    var firstBellAmOrPmIndex = 1
+    var firstBellAmOrPmIndexPlusOne = 1
     var lastBellTime = 11
-    var lastBellAmOrPmIndex = 2
+    var lastBellAmOrPmIndexPlusOne = 2
     
     var isRollOverBells = false
    
@@ -48,41 +48,50 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         timePicker.delegate = self
         timePicker.dataSource = self
         
+        self.dailyBellMessage.text = amOrPm[firstBellAmOrPmIndexPlusOne-1]
+        
         // retrieve first and last bell times when app is reopened,
         // starts out as 11am and 11pm if it is the first time app is being used
-        let firstBellHour: Int = defaults.integer(forKey: "firstBellHour")
-        let firstBellAmOrPm: Int = defaults.integer(forKey: "firstBellAmOrPM")
-        let lastBellHour: Int = defaults.integer(forKey: "lastBellHour")
-        let lastBellAmOrPm: Int = defaults.integer(forKey: "lastBellAmOrPm")
-        
-        if firstBellHour == 0 {
+        // check if keys are present
+        if isKeyPresentInUserDefaults(key: "firstBellHour") {
+            self.firstBellTime = defaults.integer(forKey: "firstBellHour")
+            print("FIRST KEY IS SAVED BEFORE")
+        } else {
             defaults.set(firstBellTime, forKey: "firstBellHour")
-        } else {
-            firstBellTime = firstBellHour
         }
-        if firstBellAmOrPm == 0 {
-            defaults.set(firstBellAmOrPmIndex, forKey: "firstBellAmOrPm")
+        
+        if isKeyPresentInUserDefaults(key: "firstBellAmOrPM") {
+            self.firstBellAmOrPmIndexPlusOne = defaults.integer(forKey: "firstBellAmOrPM")
+            print("FIRST AM OR PM KEY IS SAVED BEFORE")
         } else {
-            firstBellAmOrPmIndex = firstBellAmOrPm
+            defaults.set(firstBellAmOrPmIndexPlusOne, forKey: "firstBellAmOrPM")
         }
-        if lastBellHour == 0 {
+        
+        if isKeyPresentInUserDefaults(key: "lastBellHour") {
+            self.lastBellTime = defaults.integer(forKey: "lastBellHour")
+            print("Last KEY IS SAVED BEFORE")
+        } else {
             defaults.set(lastBellTime, forKey: "lastBellHour")
-        } else {
-            lastBellTime = lastBellHour
         }
-        if lastBellAmOrPm == 0 {
-            defaults.set(lastBellAmOrPmIndex, forKey: "lastBellAmOrPm")
+        
+        if isKeyPresentInUserDefaults(key: "lastBellAmOrPm") {
+            self.lastBellAmOrPmIndexPlusOne = defaults.integer(forKey: "lastBellAmOrPm")
+            print("Last am or pm KEY IS SAVED BEFORE")
         } else {
-            lastBellAmOrPmIndex = lastBellAmOrPm
+            defaults.set(lastBellAmOrPmIndexPlusOne, forKey: "lastBellAmOrPm")
         }
+        
+        print("INDEX FOR FIRST:", firstBellAmOrPmIndexPlusOne )
+        print("INDEX FOR LAST:", lastBellAmOrPmIndexPlusOne )
+        
         
         
         // set default for daily start / end time
         if firstBellText.text == "" {
-            firstBellText.text = "\(firstBellTime) \(amOrPm[firstBellAmOrPmIndex-1])"
+            firstBellText.text = "\(firstBellTime) \(amOrPm[firstBellAmOrPmIndexPlusOne-1])"
         }
         if lastBellText.text == "" {
-            lastBellText.text = "\(lastBellTime) \(amOrPm[lastBellAmOrPmIndex-1])"
+            lastBellText.text = "\(lastBellTime) \(amOrPm[lastBellAmOrPmIndexPlusOne-1])"
         }
         
         
@@ -107,6 +116,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+
+    func isKeyPresentInUserDefaults(key: String) -> Bool {
+        return UserDefaults.standard.object(forKey: key) != nil
     }
     
     // ACTION FOR WHEN THE BUTTON IS PRESSED
@@ -237,12 +250,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
        
             let timeIndex = firstBellTime-1
             timePicker.selectRow(timeIndex, inComponent: 0, animated: true)
-            timePicker.selectRow(firstBellAmOrPmIndex-1, inComponent: 1, animated: true)
+            timePicker.selectRow(firstBellAmOrPmIndexPlusOne-1, inComponent: 1, animated: true)
         } else {
     
             let timeIndex = lastBellTime-1
             timePicker.selectRow(timeIndex, inComponent: 0, animated: true)
-            timePicker.selectRow(lastBellAmOrPmIndex-1, inComponent: 1, animated: true)
+            timePicker.selectRow(lastBellAmOrPmIndexPlusOne-1, inComponent: 1, animated: true)
         }
         
         createTimePicker()
@@ -261,20 +274,20 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 time = firstBellTime % 12 == 0 ? 12 : firstBellTime % 12
             }
             if component == 1 {
-                firstBellAmOrPmIndex = row + 1
+                firstBellAmOrPmIndexPlusOne = row + 1
                 time = firstBellTime
             }
-            activeField?.text = "\(String(time!)) " + amOrPm[firstBellAmOrPmIndex-1]
+            activeField?.text = "\(String(time!)) " + amOrPm[firstBellAmOrPmIndexPlusOne-1]
         } else {
             if component == 0 {
                 lastBellTime = hour[row]
                 time = lastBellTime % 12 == 0 ? 12 : lastBellTime % 12
             }
             if component == 1 {
-                lastBellAmOrPmIndex = row + 1
+                lastBellAmOrPmIndexPlusOne = row + 1
                 time = lastBellTime
             }
-            activeField?.text = "\(String(time!)) " + amOrPm[lastBellAmOrPmIndex-1]
+            activeField?.text = "\(String(time!)) " + amOrPm[lastBellAmOrPmIndexPlusOne-1]
         }
         
         // check if the bell times set is vaild
@@ -283,21 +296,26 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         // update saved time for when user reopens closed app
         if activeField?.accessibilityIdentifier == "firstBellTextField" {
-            component == 0 ?
-                defaults.set(firstBellTime, forKey: "firstBellHour") :
-                defaults.set(firstBellAmOrPmIndex, forKey: "firstBellAmOrPm")
+            if component == 0 {
+                defaults.set(firstBellTime, forKey: "firstBellHour")
+            }
+            if component == 1 {
+                defaults.set(firstBellAmOrPmIndexPlusOne, forKey: "firstBellAmOrPm")
+            }
+             
+            dailyBellMessage.text = amOrPm[firstBellAmOrPmIndexPlusOne-1]
             
         } else if activeField?.accessibilityIdentifier == "lastBellTextField" {
             component == 0 ?
                 defaults.set(lastBellTime, forKey: "lastBellHour") :
-                defaults.set(lastBellAmOrPmIndex, forKey: "lastBellAmOrPm")
+                defaults.set(lastBellAmOrPmIndexPlusOne, forKey: "lastBellAmOrPm")
         }
     }
     
     func determineIfSettingRollOverBells(){
         turnOffReminder()
-        let tempLastBellTime = getMilitaryTime(normalTime: lastBellTime, index: lastBellAmOrPmIndex-1 )
-        let tempFirstBellTime = getMilitaryTime(normalTime: firstBellTime, index: firstBellAmOrPmIndex-1 )
+        let tempLastBellTime = getMilitaryTime(normalTime: lastBellTime, index: lastBellAmOrPmIndexPlusOne)
+        let tempFirstBellTime = getMilitaryTime(normalTime: firstBellTime, index: firstBellAmOrPmIndexPlusOne)
         if !isRollOverBells {
             turnOnAlarm(tempFirstBellTime: tempFirstBellTime, tempLastBellTime: tempLastBellTime)
         } else {
@@ -308,8 +326,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func checkForRollOverBellTimes()->Bool{
-        let tempLastBellTime = getMilitaryTime(normalTime: lastBellTime, index: lastBellAmOrPmIndex - 1)
-        let tempFirstBellTime = getMilitaryTime(normalTime: firstBellTime, index: firstBellAmOrPmIndex - 1)
+        let tempLastBellTime = getMilitaryTime(normalTime: lastBellTime, index: lastBellAmOrPmIndexPlusOne)
+        let tempFirstBellTime = getMilitaryTime(normalTime: firstBellTime, index: firstBellAmOrPmIndexPlusOne)
         if tempFirstBellTime > tempLastBellTime {
             return true
         }
@@ -318,6 +336,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func getMilitaryTime(normalTime:Int, index:Int)->Int{
         // differentiate midnight and noon
+        print("THIS IS THE INDEX IN GET MILITARY TIME:", index)
         if normalTime == 12 {
             if index == 1 {
                 return 0   // midnight
