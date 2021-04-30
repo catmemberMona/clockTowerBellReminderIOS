@@ -27,9 +27,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     // first and last hour saved
     // default time used is 11am to 11pm
     var firstBellTime = 11
-    var firstBellAmOrPmIndex = 0
+    var firstBellAmOrPmIndex = 1
     var lastBellTime = 11
-    var lastBellAmOrPmIndex = 1
+    var lastBellAmOrPmIndex = 2
     
     var isRollOverBells = false
    
@@ -79,10 +79,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         // set default for daily start / end time
         if firstBellText.text == "" {
-            firstBellText.text = "\(firstBellTime) \(amOrPm[firstBellAmOrPmIndex])"
+            firstBellText.text = "\(firstBellTime) \(amOrPm[firstBellAmOrPmIndex-1])"
         }
         if lastBellText.text == "" {
-            lastBellText.text = "\(lastBellTime) \(amOrPm[lastBellAmOrPmIndex])"
+            lastBellText.text = "\(lastBellTime) \(amOrPm[lastBellAmOrPmIndex-1])"
         }
         
         
@@ -237,12 +237,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
        
             let timeIndex = firstBellTime-1
             timePicker.selectRow(timeIndex, inComponent: 0, animated: true)
-            timePicker.selectRow(firstBellAmOrPmIndex, inComponent: 1, animated: true)
+            timePicker.selectRow(firstBellAmOrPmIndex-1, inComponent: 1, animated: true)
         } else {
     
             let timeIndex = lastBellTime-1
             timePicker.selectRow(timeIndex, inComponent: 0, animated: true)
-            timePicker.selectRow(lastBellAmOrPmIndex, inComponent: 1, animated: true)
+            timePicker.selectRow(lastBellAmOrPmIndex-1, inComponent: 1, animated: true)
         }
         
         createTimePicker()
@@ -261,20 +261,20 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 time = firstBellTime % 12 == 0 ? 12 : firstBellTime % 12
             }
             if component == 1 {
-                firstBellAmOrPmIndex = row
+                firstBellAmOrPmIndex = row + 1
                 time = firstBellTime
             }
-            activeField?.text = "\(String(time!)) " + amOrPm[firstBellAmOrPmIndex]
+            activeField?.text = "\(String(time!)) " + amOrPm[firstBellAmOrPmIndex-1]
         } else {
             if component == 0 {
                 lastBellTime = hour[row]
                 time = lastBellTime % 12 == 0 ? 12 : lastBellTime % 12
             }
             if component == 1 {
-                lastBellAmOrPmIndex = row
+                lastBellAmOrPmIndex = row + 1
                 time = lastBellTime
             }
-            activeField?.text = "\(String(time!)) " + amOrPm[lastBellAmOrPmIndex]
+            activeField?.text = "\(String(time!)) " + amOrPm[lastBellAmOrPmIndex-1]
         }
         
         // check if the bell times set is vaild
@@ -296,8 +296,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func determineIfSettingRollOverBells(){
         turnOffReminder()
-        let tempLastBellTime = getMilitaryTime(normalTime: lastBellTime, index: lastBellAmOrPmIndex )
-        let tempFirstBellTime = getMilitaryTime(normalTime: firstBellTime, index: firstBellAmOrPmIndex )
+        let tempLastBellTime = getMilitaryTime(normalTime: lastBellTime, index: lastBellAmOrPmIndex-1 )
+        let tempFirstBellTime = getMilitaryTime(normalTime: firstBellTime, index: firstBellAmOrPmIndex-1 )
         if !isRollOverBells {
             turnOnAlarm(tempFirstBellTime: tempFirstBellTime, tempLastBellTime: tempLastBellTime)
         } else {
@@ -308,8 +308,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func checkForRollOverBellTimes()->Bool{
-        let tempLastBellTime = getMilitaryTime(normalTime: lastBellTime, index: lastBellAmOrPmIndex )
-        let tempFirstBellTime = getMilitaryTime(normalTime: firstBellTime, index: firstBellAmOrPmIndex )
+        let tempLastBellTime = getMilitaryTime(normalTime: lastBellTime, index: lastBellAmOrPmIndex - 1)
+        let tempFirstBellTime = getMilitaryTime(normalTime: firstBellTime, index: firstBellAmOrPmIndex - 1)
         if tempFirstBellTime > tempLastBellTime {
             return true
         }
@@ -319,14 +319,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func getMilitaryTime(normalTime:Int, index:Int)->Int{
         // differentiate midnight and noon
         if normalTime == 12 {
-            if index == 0 {
+            if index == 1 {
                 return 0   // midnight
             }
             
-            if index == 1 {
+            if index == 2 {
                 return 12 // for noon
             }
         }
-        return (index == 1) ? normalTime + 12 : normalTime
+        return (index == 2) ? normalTime + 12 : normalTime
     }
 }
