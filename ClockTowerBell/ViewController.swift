@@ -32,6 +32,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     var lastBellAmOrPmIndexPlusOne = 2
     
     var isRollOverBells = false
+    var removeAllSavedDefaults = !true
    
     
     override func viewDidLoad() {
@@ -48,35 +49,34 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         timePicker.delegate = self
         timePicker.dataSource = self
         
-        self.dailyBellMessage.text = amOrPm[firstBellAmOrPmIndexPlusOne-1]
+        // Reset default keys
+        if removeAllSavedDefaults {
+           removeAllDefaultKeys()
+        }
         
         // retrieve first and last bell times when app is reopened,
         // starts out as 11am and 11pm if it is the first time app is being used
         // check if keys are present
         if isKeyPresentInUserDefaults(key: "firstBellHour") {
             self.firstBellTime = defaults.integer(forKey: "firstBellHour")
-            print("FIRST KEY IS SAVED BEFORE")
         } else {
             defaults.set(firstBellTime, forKey: "firstBellHour")
         }
         
-        if isKeyPresentInUserDefaults(key: "firstBellAmOrPM") {
-            self.firstBellAmOrPmIndexPlusOne = defaults.integer(forKey: "firstBellAmOrPM")
-            print("FIRST AM OR PM KEY IS SAVED BEFORE")
+        if isKeyPresentInUserDefaults(key: "firstBellAmOrPm") {
+            self.firstBellAmOrPmIndexPlusOne = defaults.integer(forKey: "firstBellAmOrPm")
         } else {
-            defaults.set(firstBellAmOrPmIndexPlusOne, forKey: "firstBellAmOrPM")
+            defaults.set(firstBellAmOrPmIndexPlusOne, forKey: "firstBellAmOrPm")
         }
         
         if isKeyPresentInUserDefaults(key: "lastBellHour") {
             self.lastBellTime = defaults.integer(forKey: "lastBellHour")
-            print("Last KEY IS SAVED BEFORE")
         } else {
             defaults.set(lastBellTime, forKey: "lastBellHour")
         }
         
         if isKeyPresentInUserDefaults(key: "lastBellAmOrPm") {
             self.lastBellAmOrPmIndexPlusOne = defaults.integer(forKey: "lastBellAmOrPm")
-            print("Last am or pm KEY IS SAVED BEFORE")
         } else {
             defaults.set(lastBellAmOrPmIndexPlusOne, forKey: "lastBellAmOrPm")
         }
@@ -117,9 +117,17 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-
+    
+    // FUNCTIONS FOR USERDEFAULTS
     func isKeyPresentInUserDefaults(key: String) -> Bool {
         return UserDefaults.standard.object(forKey: key) != nil
+    }
+    
+    func removeAllDefaultKeys(){
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+        print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
     }
     
     // ACTION FOR WHEN THE BUTTON IS PRESSED
@@ -314,13 +322,13 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func determineIfSettingRollOverBells(){
         turnOffReminder()
-        let tempLastBellTime = getMilitaryTime(normalTime: lastBellTime, index: lastBellAmOrPmIndexPlusOne)
-        let tempFirstBellTime = getMilitaryTime(normalTime: firstBellTime, index: firstBellAmOrPmIndexPlusOne)
+        let tempLastMilitaryTime = getMilitaryTime(normalTime: lastBellTime, index: lastBellAmOrPmIndexPlusOne)
+        let tempFirstMilitaryTime = getMilitaryTime(normalTime: firstBellTime, index: firstBellAmOrPmIndexPlusOne)
         if !isRollOverBells {
-            turnOnAlarm(tempFirstBellTime: tempFirstBellTime, tempLastBellTime: tempLastBellTime)
+            turnOnAlarm(tempFirstBellTime: tempFirstMilitaryTime, tempLastBellTime: tempLastMilitaryTime)
         } else {
-            turnOnAlarm(tempFirstBellTime: tempFirstBellTime, tempLastBellTime: 23)
-            turnOnAlarm(tempFirstBellTime: 0, tempLastBellTime: tempLastBellTime)
+            turnOnAlarm(tempFirstBellTime: tempFirstMilitaryTime, tempLastBellTime: 23)
+            turnOnAlarm(tempFirstBellTime: 0, tempLastBellTime: tempLastMilitaryTime)
         }
         
     }
