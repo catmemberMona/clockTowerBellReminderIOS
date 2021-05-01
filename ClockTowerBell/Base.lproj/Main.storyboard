@@ -21,7 +21,7 @@
                                 <color key="backgroundColor" red="0.15688718979999999" green="0.28895081880000001" blue="0.46598406920000002" alpha="0.88799114619999997" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="86"/>
                                 <state key="normal">
-                                    <color key="titleColor" red="1" green="0.92590206860000002" blue="0.58397513629999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="1" green="0.92549019607843142" blue="0.58431372549019611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
