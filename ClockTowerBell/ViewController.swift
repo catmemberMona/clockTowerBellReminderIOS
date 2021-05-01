@@ -13,7 +13,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     // VARIABLES FOR SET ON/OFF Button
     @IBOutlet weak var buONOFFBTN: UIButton!
     let yellowColor = UIColor.init(red: 255/255, green: 236/255, blue: 149/255, alpha: 1.0);
-    let blueColor = UIColor.init(red: 40/255, green: 74/255, blue: 119/255, alpha: 1.0);
+    let blueColor = UIColor.init(red: 12/255, green: 18/255, blue: 31/255, alpha: 0.95);
     
     // VARIBALES FOR SETTING THE DAILY START AND END TIMES
     var timePicker = UIPickerView()
@@ -104,9 +104,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
         
         // styling for on/off Button
-        buONOFFBTN.layer.cornerRadius = 15
-        buONOFFBTN.layer.borderWidth = 1.5
-        buONOFFBTN.layer.borderColor = UIColor.clear.cgColor
+        buONOFFBTN.layer.cornerRadius = buONOFFBTN.frame.size.width / 2
+        buONOFFBTN.layer.borderWidth = 5
+        buONOFFBTN.layer.borderColor = self.yellowColor.cgColor
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
