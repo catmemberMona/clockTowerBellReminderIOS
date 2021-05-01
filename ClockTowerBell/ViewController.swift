@@ -81,11 +81,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             defaults.set(lastBellAmOrPmIndexPlusOne, forKey: "lastBellAmOrPm")
         }
         
-        print("INDEX FOR FIRST:", firstBellAmOrPmIndexPlusOne )
-        print("INDEX FOR LAST:", lastBellAmOrPmIndexPlusOne )
-        
-        
-        
         // set default for daily start / end time
         if firstBellText.text == "" {
             firstBellText.text = "\(firstBellTime) \(amOrPm[firstBellAmOrPmIndexPlusOne-1])"
@@ -152,7 +147,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     }
                 }
                 defaults.set(!buttonState, forKey: "buttonState")
-//                print(defaults.bool(forKey: "buttonState"))
                 
             } else if error != nil {
                 print("there is an error")
@@ -183,7 +177,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             
             // set content the notification will display
             let content = UNMutableNotificationContent()
-            let time = i
+            let time = i % 12 == 0 ? 12 : i % 12
             content.title = "It is \(time) O'clock"
             // custom sound
             let soundName = UNNotificationSoundName("clock-bell-one.wav");
@@ -344,7 +338,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func getMilitaryTime(normalTime:Int, index:Int)->Int{
         // differentiate midnight and noon
-        print("THIS IS THE INDEX IN GET MILITARY TIME:", index)
         if normalTime == 12 {
             if index == 1 {
                 return 0   // midnight
