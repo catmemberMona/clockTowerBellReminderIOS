@@ -94,7 +94,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // retrieve on/off state when app is reopened,
         // starts out false if it is the first time app is being used
         let buttonStatus = defaults.bool(forKey: "buttonState")
-        if buttonStatus != false && buttonStatus != true {
+        if !isKeyPresentInUserDefaults(key: "buttonState") {
             defaults.set(false, forKey: "buttonState")
             buONOFFBTN.setTitle("Turn On", for: .normal)
         } else if buttonStatus == true {
@@ -136,6 +136,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 // set notifications or remove notifications
                 // show corresponding UI
                 if buttonState == false {
+                    self.isRollOverBells = self.checkForRollOverBellTimes()
                     self.determineIfSettingRollOverBells()
                     DispatchQueue.main.async {
                         self.showOn(btn:sender);
@@ -168,6 +169,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
         
     func turnOnAlarm(tempFirstBellTime:Int, tempLastBellTime:Int){
+        print("INSIDE TURNONALARM:" ,  tempFirstBellTime, tempLastBellTime)
         // set reminder for every hour during the day from 11am to 11pm
         for i in tempFirstBellTime...tempLastBellTime { // max range would be 0 - 23
             // set the time
@@ -319,8 +321,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let tempLastMilitaryTime = getMilitaryTime(normalTime: lastBellTime, index: lastBellAmOrPmIndexPlusOne)
         let tempFirstMilitaryTime = getMilitaryTime(normalTime: firstBellTime, index: firstBellAmOrPmIndexPlusOne)
         if !isRollOverBells {
+            print("INSIDE OF NOT ROLL OVER:", isRollOverBells, tempFirstMilitaryTime, tempLastMilitaryTime)
             turnOnAlarm(tempFirstBellTime: tempFirstMilitaryTime, tempLastBellTime: tempLastMilitaryTime)
         } else {
+            print("INSIDE OF ROLL OVER:", isRollOverBells, tempFirstMilitaryTime, tempLastMilitaryTime)
             turnOnAlarm(tempFirstBellTime: tempFirstMilitaryTime, tempLastBellTime: 23)
             turnOnAlarm(tempFirstBellTime: 0, tempLastBellTime: tempLastMilitaryTime)
         }
