@@ -169,7 +169,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
         
     func turnOnAlarm(tempFirstBellTime:Int, tempLastBellTime:Int){
-        print("INSIDE TURNONALARM:" ,  tempFirstBellTime, tempLastBellTime)
         // set reminder for every hour during the day from 11am to 11pm
         for i in tempFirstBellTime...tempLastBellTime { // max range would be 0 - 23
             // set the time
@@ -321,10 +320,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let tempLastMilitaryTime = getMilitaryTime(normalTime: lastBellTime, index: lastBellAmOrPmIndexPlusOne)
         let tempFirstMilitaryTime = getMilitaryTime(normalTime: firstBellTime, index: firstBellAmOrPmIndexPlusOne)
         if !isRollOverBells {
-            print("INSIDE OF NOT ROLL OVER:", isRollOverBells, tempFirstMilitaryTime, tempLastMilitaryTime)
             turnOnAlarm(tempFirstBellTime: tempFirstMilitaryTime, tempLastBellTime: tempLastMilitaryTime)
         } else {
-            print("INSIDE OF ROLL OVER:", isRollOverBells, tempFirstMilitaryTime, tempLastMilitaryTime)
             turnOnAlarm(tempFirstBellTime: tempFirstMilitaryTime, tempLastBellTime: 23)
             turnOnAlarm(tempFirstBellTime: 0, tempLastBellTime: tempLastMilitaryTime)
         }
