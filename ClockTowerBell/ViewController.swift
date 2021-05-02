@@ -104,7 +104,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
         
         // styling for on/off Button
-        buONOFFBTN.layer.cornerRadius = buONOFFBTN.frame.size.width / 2
+        buONOFFBTN.layer.cornerRadius = buONOFFBTN.layer.bounds.size.height * 0.5
+        buONOFFBTN.layer.masksToBounds = true
         buONOFFBTN.layer.borderWidth = 5
         buONOFFBTN.layer.borderColor = self.yellowColor.cgColor
     }
@@ -305,8 +306,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             if component == 1 {
                 defaults.set(firstBellAmOrPmIndexPlusOne, forKey: "firstBellAmOrPm")
             }
-             
-            dailyBellMessage.text = amOrPm[firstBellAmOrPmIndexPlusOne-1]
             
         } else if activeField?.accessibilityIdentifier == "lastBellTextField" {
             component == 0 ?

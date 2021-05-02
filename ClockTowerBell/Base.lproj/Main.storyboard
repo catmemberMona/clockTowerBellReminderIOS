@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +20,6 @@
                                 <rect key="frame" x="45" y="134" width="324" height="324"/>
                                 <color key="backgroundColor" red="0.07246298882807603" green="0.13530198020714021" blue="0.21887844125521105" alpha="0.89000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="fum-iJ-yjo" secondAttribute="height" multiplier="1:1" id="1Ai-pw-z2f"/>
                                     <constraint firstAttribute="width" secondItem="fum-iJ-yjo" secondAttribute="height" multiplier="1:1" id="z94-Aq-SGM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="69"/>
@@ -32,56 +31,71 @@
                                     <action selector="buOnOffBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KZG-FK-lZl"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First Bell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktg-mT-tRJ">
-                                <rect key="frame" x="40" y="497" width="66" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Bell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktg-mT-tRJ">
+                                <rect key="frame" x="45" y="513" width="66" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Bell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSf-W6-rUK">
-                                <rect key="frame" x="303" y="498" width="65" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="11PM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VMO-Hj-5UL">
-                                <rect key="frame" x="306" y="527" width="62" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="11PM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VMO-Hj-5UL">
+                                <rect key="frame" x="304" y="544" width="65" height="35.5"/>
                                 <accessibility key="accessibilityConfiguration" identifier="lastBellTextField"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="VMO-Hj-5UL" secondAttribute="height" multiplier="31:17" id="Csk-y5-kUd"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="11AM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L4A-b8-bAW">
-                                <rect key="frame" x="44" y="527" width="62.5" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="11AM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L4A-b8-bAW">
+                                <rect key="frame" x="45" y="544" width="66" height="36"/>
                                 <accessibility key="accessibilityConfiguration" identifier="firstBellTextField"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="L4A-b8-bAW" secondAttribute="height" multiplier="31:17" id="bz0-HF-FYC"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set Daily Bells" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Dn-Wg-SbS">
-                                <rect key="frame" x="114" y="539" width="183" height="21.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Set Daily Bells" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Dn-Wg-SbS">
+                                <rect key="frame" x="119" y="553" width="177" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Important: Leave application in the background by returning to the iphone homepage." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vaM-Sl-UA9">
-                                <rect key="frame" x="13" y="609" width="384" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Important: Leave the application in the background by returning to the iphone homepage or by closing the application." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vaM-Sl-UA9">
+                                <rect key="frame" x="30" y="796.5" width="354" height="50.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Bell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSf-W6-rUK">
+                                <rect key="frame" x="304" y="513" width="65" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.071387398069999997" green="0.081561955670000005" blue="0.1225306718" alpha="0.94707899029999998" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="uSf-W6-rUK" firstAttribute="trailing" secondItem="fum-iJ-yjo" secondAttribute="trailing" id="1ro-89-R2h"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vaM-Sl-UA9" secondAttribute="bottom" constant="15" id="2N6-9Y-zTl"/>
                             <constraint firstItem="fum-iJ-yjo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="3Cw-Wn-mqA"/>
-                            <constraint firstItem="vaM-Sl-UA9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="4Ya-RI-gFX"/>
-                            <constraint firstAttribute="trailing" secondItem="vaM-Sl-UA9" secondAttribute="trailing" constant="15" id="deZ-m6-JOm"/>
+                            <constraint firstItem="uSf-W6-rUK" firstAttribute="top" secondItem="fum-iJ-yjo" secondAttribute="bottom" constant="55" id="8Du-QL-vI4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VMO-Hj-5UL" secondAttribute="trailing" constant="45" id="9EV-ps-baO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vaM-Sl-UA9" secondAttribute="trailing" constant="10" id="AnZ-gi-0Jn"/>
+                            <constraint firstItem="uSf-W6-rUK" firstAttribute="leading" secondItem="VMO-Hj-5UL" secondAttribute="leading" id="Euv-1T-Svv"/>
+                            <constraint firstItem="VMO-Hj-5UL" firstAttribute="top" secondItem="uSf-W6-rUK" secondAttribute="bottom" constant="10" id="GpM-Sy-8zW"/>
+                            <constraint firstItem="L4A-b8-bAW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="Nvl-8n-ueV"/>
+                            <constraint firstItem="2Dn-Wg-SbS" firstAttribute="top" secondItem="fum-iJ-yjo" secondAttribute="bottom" constant="95" id="PQw-wV-xO0"/>
+                            <constraint firstItem="ktg-mT-tRJ" firstAttribute="top" secondItem="fum-iJ-yjo" secondAttribute="bottom" constant="55" id="RV7-KD-qK0"/>
+                            <constraint firstItem="ktg-mT-tRJ" firstAttribute="trailing" secondItem="L4A-b8-bAW" secondAttribute="trailing" id="TSP-T8-wVC"/>
+                            <constraint firstItem="VMO-Hj-5UL" firstAttribute="leading" secondItem="2Dn-Wg-SbS" secondAttribute="trailing" constant="8" id="bc1-Is-NxQ"/>
+                            <constraint firstItem="vaM-Sl-UA9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="bkY-2w-yeV"/>
+                            <constraint firstItem="2Dn-Wg-SbS" firstAttribute="leading" secondItem="L4A-b8-bAW" secondAttribute="trailing" constant="8" id="e1a-B4-T12"/>
                             <constraint firstItem="fum-iJ-yjo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="90" id="oIa-dS-XYj"/>
+                            <constraint firstItem="L4A-b8-bAW" firstAttribute="top" secondItem="ktg-mT-tRJ" secondAttribute="bottom" constant="10" id="pHj-d8-yQs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fum-iJ-yjo" secondAttribute="trailing" constant="45" id="rNB-7w-Frv"/>
+                            <constraint firstItem="ktg-mT-tRJ" firstAttribute="leading" secondItem="fum-iJ-yjo" secondAttribute="leading" id="uHf-Es-cpu"/>
                         </constraints>
                     </view>
                     <connections>
