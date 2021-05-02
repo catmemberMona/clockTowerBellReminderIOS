@@ -104,10 +104,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
         
         // styling for on/off Button
-        buONOFFBTN.layer.cornerRadius = buONOFFBTN.layer.bounds.size.height * 0.5
-        buONOFFBTN.layer.masksToBounds = true
-        buONOFFBTN.layer.borderWidth = 5
-        buONOFFBTN.layer.borderColor = self.yellowColor.cgColor
+        DispatchQueue.main.async {
+            self.buONOFFBTN.layer.cornerRadius = self.buONOFFBTN.frame.size.width / 2
+            self.buONOFFBTN.layer.masksToBounds = true
+            self.buONOFFBTN.layer.borderWidth = 5
+            self.buONOFFBTN.layer.borderColor = self.yellowColor.cgColor
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
