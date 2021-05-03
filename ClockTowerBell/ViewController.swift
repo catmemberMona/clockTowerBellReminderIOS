@@ -298,7 +298,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         // check if the bell times set is vaild
         isRollOverBells = checkForRollOverBellTimes()
-        determineIfSettingRollOverBells()
+        // check if user set bell as on or off
+        if defaults.bool(forKey: "buttonState") {
+            // check conditionals for setting notifications
+            determineIfSettingRollOverBells()
+        }
+     
         
         // update saved time for when user reopens closed app
         if activeField?.accessibilityIdentifier == "firstBellTextField" {
