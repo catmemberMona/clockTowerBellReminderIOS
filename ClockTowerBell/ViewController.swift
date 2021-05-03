@@ -130,32 +130,80 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     // ACTION FOR WHEN THE BUTTON IS PRESSED
     @IBAction func buOnOffBtn(_ sender: UIButton) {
-        let defaults = UserDefaults.standard
-        let buttonState = defaults.bool(forKey: "buttonState")
-        
         // request permission to send notifications and alert
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {success, error in
             if success {
                 // set notifications or remove notifications
                 // show corresponding UI
-                if buttonState == false {
-                    self.isRollOverBells = self.checkForRollOverBellTimes()
-                    self.determineIfSettingRollOverBells()
-                    DispatchQueue.main.async {
-                        self.showOn(btn:sender);
-                    }
-                } else {
-                    self.turnOffReminder();
-                    DispatchQueue.main.async {
-                        self.showOff(btn:sender);
-                    }
-                }
-                defaults.set(!buttonState, forKey: "buttonState")
+                self.updateOnAndOffState(btn: sender)
                 
             } else if error != nil {
                 print("there is an error")
             }
         })
+        
+        // SHOW ALERT IF USER DOES NOT ALLOW PERMISSION FOR PUSH NOTIFICATION
+        UNUserNotificationCenter.current().getNotificationSettings(completionHandler: {setting in
+            switch setting.authorizationStatus {
+            case .authorized:
+                print("User gave permisson")
+            case .denied:
+                print("User denied permissions")
+                DispatchQueue.main.async {
+                    self.showAlertForNeedingPermission()
+                }
+            case .notDetermined:
+                print("User has not been asked yet for permission")
+            case .provisional:
+                print("User gave permisson")
+            case .ephemeral:
+                print("User gave permisson")
+            @unknown default:
+                print("There is an error with notification permissions")
+            }
+        })
+    }
+    
+    // check and update on and off state
+    func updateOnAndOffState(btn: UIButton){
+        let defaults = UserDefaults.standard
+        let buttonState = defaults.bool(forKey: "buttonState")
+        
+        if buttonState == false {
+            isRollOverBells = checkForRollOverBellTimes()
+            determineIfSettingRollOverBells()
+            DispatchQueue.main.async {
+                self.showOn(btn:btn);
+            }
+        } else {
+            turnOffReminder();
+            DispatchQueue.main.async {
+                self.showOff(btn:btn);
+            }
+        }
+        defaults.set(!buttonState, forKey: "buttonState")
+    }
+    
+    func showAlertForNeedingPermission(){
+        let alert = UIAlertController(title: "Unable to use notifications",
+                                      message: "To enable notifications, go to Settings and enable notifications for this app.",
+                                      preferredStyle: UIAlertController.Style.alert)
+
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+
+        let settingsAction = UIAlertAction(title: "Settings", style: .default, handler: { _ in
+            // Take the user to Settings app to possibly change permission.
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                    // Finished opening URL
+                })
+            }
+        })
+        alert.addAction(settingsAction)
+
+        self.present(alert, animated: true, completion: nil)
     }
     
     // show the UI corresponding to the state of the notifications
