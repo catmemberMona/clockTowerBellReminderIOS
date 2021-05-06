@@ -20,3 +20,59 @@ This idea is based on bell towers used in the past, during the times when clock/
 
 <a href="https://iconscout.com/icons/bell" target="_blank">Bell Icon</a> by <a href="https://iconscout.com/contributors/font-awesome" target="_blank">Font Awesome</a>
 
+
+### For Setting First and Last Bell
+
+https://stackoverflow.com/questions/32261226/ios-swift-how-to-detect-touch-action-on-a-uitextfield
+
+https://developer.apple.com/forums/thread/24315
+
+https://stackoverflow.com/questions/27180995/uipickerview-selectrow-doesnt-works/27327023
+
+https://stackoverflow.com/questions/11777072/how-to-set-a-default-value-of-a-uipickerview
+
+https://stackoverflow.com/questions/49386977/how-can-i-set-a-id-to-my-textbox-in-swift
+
+https://developer.apple.com/documentation/uikit/uitextfielddelegate/1619601-textfieldshouldbeginediting
+
+https://stackoverflow.com/questions/12812510/uipickerview-multiple-textfields-xcode
+
+https://stackoverflow.com/questions/38319116/trying-to-make-picker-view-input-for-several-textfields-separately
+
+https://peterwitham.com/swift-archives/how-to-use-a-uipickerview-as-input-for-a-uitextfield/
+
+https://developer.apple.com/documentation/uikit/uipickerview
+
+https://www.youtube.com/watch?v=8NngJrVFfUw
+
+https://stackoverflow.com/questions/48585874/clicking-on-a-button-to-make-pickerview-appear-then-choice-appears-in-label
+
+https://www.youtube.com/watch?v=J1l_H_FyjjI
+
+https://www.gifgit.com/
+
+### On/Off Button
+
+https://stackoverflow.com/questions/25587713/how-to-set-imageview-in-circle-like-imagecontacts-in-swift-correctly
+
+https://stackoverflow.com/questions/63223166/uibutton-not-rounding-correctly-despite-corner-radius-being-half-the-height
+
+### Notification Permissions
+
+https://stackoverflow.com/questions/48796561/how-to-ask-notifications-permissions-if-denied/48796674
+
+https://dev.to/onmyway133/how-to-check-if-push-notification-is-actually-enabled-in-ios-20o8
+
+https://stackoverflow.com/questions/29787736/isregisteredforremotenotifications-returns-true-even-though-i-disabled-it-comple/39914660
+
+### Storing simple data
+
+https://stackoverflow.com/questions/43402032/how-to-remove-all-userdefaults-data-swift
+
+### Privacy Policy 
+
+https://www.labnol.org/internet/regular-expressions-forms/28380/
+
+
+
+
