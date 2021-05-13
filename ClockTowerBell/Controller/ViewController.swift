@@ -21,25 +21,23 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var firstBellText: UITextField!
     @IBOutlet weak var lastBellText: UITextField!
     var activeField: UITextField?
-    let amOrPm = ["AM", "PM"]
-    let hour = [1,2,3,4,5,6,7,8,9,10,11,12]
-
-    // first and last hour saved
-    // default time used is 11am to 11pm
-    var firstBellTime = 11
-    var firstBellAmOrPmIndexPlusOne = 1
-    var lastBellTime = 11
-    var lastBellAmOrPmIndexPlusOne = 2
     
-    var isRollOverBells = false
-    var removeAllSavedDefaults = !true
+
+   
+//    var removeAllSavedDefaults = !true
+    
+    
+    // Defining Struct Objects
+    var onOffButton:OnOffButton
+    var onOffButtonStyling:OnOffButtonStyling
+    var storage:Storage
    
     
-    override func viewDidLoad() {
+    override func viewDidLoad(){
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         // save data
-        let defaults = UserDefaults.standard
+        storage = Storage()
         
         // Set up for the daily start and end time picker view
         // set VC as textfield's delegate
@@ -50,15 +48,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         timePicker.dataSource = self
         
         // Reset default keys
-        if removeAllSavedDefaults {
-           removeAllDefaultKeys()
-        }
+//        if removeAllSavedDefaults {
+//           removeAllDefaultKeys()
+//        }
         
         // retrieve first and last bell times when app is reopened,
         // starts out as 11am and 11pm if it is the first time app is being used
         // check if keys are present
-        if isKeyPresentInUserDefaults(key: "firstBellHour") {
-            self.firstBellTime = defaults.integer(forKey: "firstBellHour")
+        if storage.checkIsStatePreviouslySaved(key: "firstBellHour") {
+            self.firstBellTime = storage.storedData.integer(forKey: "firstBellHour")
         } else {
             defaults.set(firstBellTime, forKey: "firstBellHour")
         }
@@ -89,44 +87,30 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             lastBellText.text = "\(lastBellTime) \(amOrPm[lastBellAmOrPmIndexPlusOne-1])"
         }
         
+        // retrieve saved on/off state when app is reopened,
+        // or save new state which starts out false if it is the first time app is being used
+        onOffButton = OnOffButton(button: buONOFFBTN, customYellow: yellowColor, customBlue: blueColor)
+        onOffButton.setButtonUIView()
         
-        
-        // retrieve on/off state when app is reopened,
-        // starts out false if it is the first time app is being used
-        let buttonStatus = defaults.bool(forKey: "buttonState")
-        if !isKeyPresentInUserDefaults(key: "buttonState") {
-            defaults.set(false, forKey: "buttonState")
-            buONOFFBTN.setTitle("Turn On", for: .normal)
-        } else if buttonStatus == true {
-            showOn(btn:buONOFFBTN)
-        } else if buttonStatus == false {
-            showOff(btn: buONOFFBTN)
-        }
-        
-        // styling for on/off Button
-        DispatchQueue.main.async {
-            self.buONOFFBTN.layer.cornerRadius = self.buONOFFBTN.frame.size.width / 2
-            self.buONOFFBTN.layer.masksToBounds = true
-            self.buONOFFBTN.layer.borderWidth = 5
-            self.buONOFFBTN.layer.borderColor = self.yellowColor.cgColor
-        }
+        // set button styling for on/off Button
+        onOffButtonStyling = OnOffButtonStyling(button: buONOFFBTN, customYellow: yellowColor, customBlue: blueColor)
+        onOffButtonStyling.setInitialButtonUIView()
+       
     }
     
+    // screen
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
-    // FUNCTIONS FOR USERDEFAULTS
-    func isKeyPresentInUserDefaults(key: String) -> Bool {
-        return UserDefaults.standard.object(forKey: key) != nil
-    }
+
     
-    func removeAllDefaultKeys(){
-        let domain = Bundle.main.bundleIdentifier!
-        UserDefaults.standard.removePersistentDomain(forName: domain)
-        UserDefaults.standard.synchronize()
-        print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
-    }
+//    func removeAllDefaultKeys(){
+//        let domain = Bundle.main.bundleIdentifier!
+//        UserDefaults.standard.removePersistentDomain(forName: domain)
+//        UserDefaults.standard.synchronize()
+//        print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
+//    }
     
     // ACTION FOR WHEN THE BUTTON IS PRESSED
     @IBAction func buOnOffBtn(_ sender: UIButton) {
@@ -135,7 +119,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             if success {
                 // set notifications or remove notifications
                 // show corresponding UI
-                self.updateOnAndOffState(btn: sender)
+                self.onOffButton.updateButtonUIViewAndState()
                 
             } else if error != nil {
                 print("there is an error")
@@ -164,26 +148,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         })
     }
     
-    // check and update on and off state
-    func updateOnAndOffState(btn: UIButton){
-        let defaults = UserDefaults.standard
-        let buttonState = defaults.bool(forKey: "buttonState")
-        
-        if buttonState == false {
-            isRollOverBells = checkForRollOverBellTimes()
-            determineIfSettingRollOverBells()
-            DispatchQueue.main.async {
-                self.showOn(btn:btn);
-            }
-        } else {
-            turnOffReminder();
-            DispatchQueue.main.async {
-                self.showOff(btn:btn);
-            }
-        }
-        defaults.set(!buttonState, forKey: "buttonState")
-    }
-    
     func showAlertForNeedingPermission(){
         let alert = UIAlertController(title: "Unable to use notifications",
                                       message: "To enable notifications, go to Settings and enable notifications for this app.",
@@ -206,18 +170,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         self.present(alert, animated: true, completion: nil)
     }
     
-    // show the UI corresponding to the state of the notifications
-    func showOn(btn:UIButton){
-        btn.backgroundColor = self.yellowColor;
-        btn.setTitleColor(blueColor, for: .normal)
-        btn.setTitle("Turn Off", for: .normal)
-    }
-    
-    func showOff(btn:UIButton){
-        btn.backgroundColor = blueColor;
-        btn.setTitleColor(yellowColor, for: .normal)
-        btn.setTitle("Turn On", for: .normal)
-    }
+  
         
     func turnOnAlarm(tempFirstBellTime:Int, tempLastBellTime:Int){
         // set reminder for every hour during the day from 11am to 11pm
