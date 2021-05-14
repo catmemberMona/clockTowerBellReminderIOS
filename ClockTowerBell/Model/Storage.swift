@@ -15,9 +15,6 @@ struct Storage {
         return storedData.object(forKey: key) != nil
     }
     
-    func saveState(key:String, bellValue:Int?, onOffValue2:Bool? ){
-        storedData.set(bellValue, forKey: key)
-    }
     
     
 }

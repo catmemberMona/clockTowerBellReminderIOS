@@ -5,7 +5,7 @@
 //  Created by mona zheng on 5/13/21.
 //
 
-import Foundation
+import UIKit
 
 struct Tower {
     let amOrPm = ["AM", "PM"]
@@ -16,8 +16,46 @@ struct Tower {
     var firstBellAmOrPmIndexPlusOne = 1
     var lastBellTime = 11
     var lastBellAmOrPmIndexPlusOne = 2
-    var isRollOverBells = false
     
+    func updateTextField(textField: UITextField, bell:String){
+        if bell == "first" {
+            textField.text = "\(firstBellTime) \(amOrPm[firstBellAmOrPmIndexPlusOne-1])"
+        } else if bell == "last" {
+            textField.text = "\(lastBellTime) \(amOrPm[lastBellAmOrPmIndexPlusOne-1])"
+        }
+        
+    }
     
+    mutating func checkForRollOverBellTimes()->Bool{
+        let tempLastBellTime = getMilitaryTime(bell: "last")
+        let tempFirstBellTime = getMilitaryTime(bell: "first")
+        if tempFirstBellTime > tempLastBellTime {
+            return true
+        }
+        return false
+    }
     
+    func getMilitaryTime(bell:String)->Int{
+        // differentiate midnight and noon
+        let normalTime:Int
+        let index: Int
+        if bell == "first" {
+            normalTime = firstBellTime
+            index = firstBellAmOrPmIndexPlusOne
+        } else {
+            normalTime = lastBellTime
+            index = lastBellAmOrPmIndexPlusOne
+        }
+        
+        if normalTime == 12 {
+            if index == 1 {
+                return 0   // midnight
+            }
+            
+            if index == 2 {
+                return 12 // for noon
+            }
+        }
+        return (index == 2) ? normalTime + 12 : normalTime
+    }
 }
