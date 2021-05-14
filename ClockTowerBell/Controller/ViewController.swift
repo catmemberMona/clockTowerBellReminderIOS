@@ -20,8 +20,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     var timePicker = UIPickerView()
     var activeField: UITextField?
     
-    //    var removeAllSavedDefaults = !true
-    
     // Defining Struct Objects
     var onOffButton:OnOffButton!
     var storage:Storage!
@@ -41,14 +39,27 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         timePicker.delegate = self
         timePicker.dataSource = self
         
-        //Reset default keys
-//        if removeAllSavedDefaults {
-//           removeAllDefaultKeys()
-//        }
-        
         // check if keys are present
         // retrieve first and last bell times when app is reopened, or
         // starts first and last bell times as 11am and 11pm if it is the first time app is being used
+        determineFirstAndLastBellOnStartUp()
+        
+        // set display for daily first / last bells
+        if firstBellText.text == "" {
+            tower.updateTextField(textField: firstBellText, bell: "first")
+        }
+        if lastBellText.text == "" {
+            tower.updateTextField(textField: lastBellText, bell: "last")
+        }
+        
+        // retrieve saved on/off state when app is reopened,
+        // or save new state which starts out false if it is the first time app is being used
+        onOffButton = OnOffButton(button: buONOFFBTN)
+        onOffButton.setInitialButtonUIView()
+        onOffButton.setButtonUIView()
+    }
+    
+    func determineFirstAndLastBellOnStartUp(){
         if storage.checkIsStatePreviouslySaved(key: "firstBellHour") {
             tower.firstBellTime = storage.storedData.integer(forKey: "firstBellHour")
         } else {
@@ -72,39 +83,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         } else {
             storage.storedData.set(tower.lastBellAmOrPmIndexPlusOne, forKey: "lastBellAmOrPm")
         }
-        
-        // set default for daily start / end time
-        if firstBellText.text == "" {
-            tower.updateTextField(textField: firstBellText, bell: "first")
-        }
-        if lastBellText.text == "" {
-            tower.updateTextField(textField: lastBellText, bell: "last")
-        }
-        
-        // retrieve saved on/off state when app is reopened,
-        // or save new state which starts out false if it is the first time app is being used
-        onOffButton = OnOffButton(button: buONOFFBTN)
-        onOffButton.setInitialButtonUIView()
-        onOffButton.setButtonUIView()
-    
-        
     }
     
     // screen
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
-    
-    
-    //    func removeAllDefaultKeys(){
-    //        let domain = Bundle.main.bundleIdentifier!
-    //        UserDefaults.standard.removePersistentDomain(forName: domain)
-    //        UserDefaults.standard.synchronize()
-    //        print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
-    //    }
-    
-    
     
     // Action function
     @IBAction func buOnOffBtn(_ sender: UIButton) {

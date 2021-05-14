@@ -14,7 +14,5 @@ struct Storage {
         // check if keys are present
         return storedData.object(forKey: key) != nil
     }
-    
-    
-    
 }
+
