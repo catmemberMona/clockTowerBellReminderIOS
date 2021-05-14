@@ -22,14 +22,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     // Defining Struct Objects
     var onOffButton:OnOffButton!
-    var storage:Storage!
+    var storage = Storage()
     var tower = Tower()
     
     override func viewDidLoad(){
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        // save data
-        storage = Storage()
         
         // Set up for the daily start and end time picker view
         // set VC as textfield's delegate
@@ -52,11 +49,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             tower.updateTextField(textField: lastBellText, bell: "last")
         }
         
-        // retrieve saved on/off state when app is reopened,
-        // or save new state which starts out false if it is the first time app is being used
+        // Set up button View
         onOffButton = OnOffButton(button: buONOFFBTN)
-        onOffButton.setInitialButtonUIView()
-        onOffButton.setButtonUIView()
     }
     
     func determineFirstAndLastBellOnStartUp(){

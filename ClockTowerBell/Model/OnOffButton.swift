@@ -16,6 +16,11 @@ struct OnOffButton {
     
     init(button:UIButton){
         self.button = button
+        
+        // retrieve saved on/off state when app is reopened,
+        // or save new state which starts out false if it is the first time app is being used
+        setInitialButtonUIView()
+        setButtonUIView()
     }
    
     func onOffState()->Bool{
