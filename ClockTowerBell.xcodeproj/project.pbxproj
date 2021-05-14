@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F96F451D264DABFC00773BE7 /* OnOffButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96F451C264DABFC00773BE7 /* OnOffButton.swift */; };
+		F96F4521264DB9CC00773BE7 /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96F4520264DB9CC00773BE7 /* Tower.swift */; };
+		F96F4523264DBA9100773BE7 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96F4522264DBA9100773BE7 /* Storage.swift */; };
 		F9AEE3D8261FD9710086B0BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AEE3D7261FD9710086B0BA /* AppDelegate.swift */; };
 		F9AEE3DA261FD9710086B0BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AEE3D9261FD9710086B0BA /* SceneDelegate.swift */; };
 		F9AEE3DC261FD9710086B0BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AEE3DB261FD9710086B0BA /* ViewController.swift */; };
@@ -36,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F96F451C264DABFC00773BE7 /* OnOffButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnOffButton.swift; sourceTree = "<group>"; };
+		F96F4520264DB9CC00773BE7 /* Tower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tower.swift; sourceTree = "<group>"; };
+		F96F4522264DBA9100773BE7 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		F9AEE3D4261FD9710086B0BA /* ClockTowerBell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClockTowerBell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9AEE3D7261FD9710086B0BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9AEE3D9261FD9710086B0BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +84,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F96F4517264DAAD400773BE7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F9E1DF2D2627952000774C00 /* clock-bell-one.wav */,
+				F96F451C264DABFC00773BE7 /* OnOffButton.swift */,
+				F96F4520264DB9CC00773BE7 /* Tower.swift */,
+				F96F4522264DBA9100773BE7 /* Storage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F96F4518264DAAE100773BE7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F9AEE3E2261FD9720086B0BA /* LaunchScreen.storyboard */,
+				F9AEE3DD261FD9710086B0BA /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F96F4519264DAAE800773BE7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F9AEE3DB261FD9710086B0BA /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		F9AEE3CB261FD9710086B0BA = {
 			isa = PBXGroup;
 			children = (
@@ -101,14 +135,13 @@
 		F9AEE3D6261FD9710086B0BA /* ClockTowerBell */ = {
 			isa = PBXGroup;
 			children = (
-				F9E1DF2D2627952000774C00 /* clock-bell-one.wav */,
 				F9AEE3D7261FD9710086B0BA /* AppDelegate.swift */,
 				F9AEE3D9261FD9710086B0BA /* SceneDelegate.swift */,
-				F9AEE3DB261FD9710086B0BA /* ViewController.swift */,
-				F9AEE3DD261FD9710086B0BA /* Main.storyboard */,
-				F9AEE3E0261FD9720086B0BA /* Assets.xcassets */,
-				F9AEE3E2261FD9720086B0BA /* LaunchScreen.storyboard */,
 				F9AEE3E5261FD9720086B0BA /* Info.plist */,
+				F96F4519264DAAE800773BE7 /* Controller */,
+				F96F4518264DAAE100773BE7 /* View */,
+				F96F4517264DAAD400773BE7 /* Model */,
+				F9AEE3E0261FD9720086B0BA /* Assets.xcassets */,
 			);
 			path = ClockTowerBell;
 			sourceTree = "<group>";
@@ -262,8 +295,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F96F4523264DBA9100773BE7 /* Storage.swift in Sources */,
+				F96F451D264DABFC00773BE7 /* OnOffButton.swift in Sources */,
 				F9AEE3DC261FD9710086B0BA /* ViewController.swift in Sources */,
 				F9AEE3D8261FD9710086B0BA /* AppDelegate.swift in Sources */,
+				F96F4521264DB9CC00773BE7 /* Tower.swift in Sources */,
 				F9AEE3DA261FD9710086B0BA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,6 +483,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2;
 				PRODUCT_BUNDLE_IDENTIFIER = SaltyYan.ClockTowerBell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -466,6 +503,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2;
 				PRODUCT_BUNDLE_IDENTIFIER = SaltyYan.ClockTowerBell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
