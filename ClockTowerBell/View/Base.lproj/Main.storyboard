@@ -8,10 +8,119 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Start Screen View Controller-->
+        <scene sceneID="pj4-Xi-pCS">
+            <objects>
+                <viewController storyboardIdentifier="StartScreen" id="A3v-Hw-cbc" customClass="StartScreenViewController" customModule="ClockTowerBell" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LO2-77-ny8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rj4-3z-8g6">
+                                <rect key="frame" x="60" y="423" width="294" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.92590206860000002" blue="0.58397513629999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="C6D-Yn-byk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <state key="normal" title="Start Introduction">
+                                    <color key="titleColor" red="0.046350297589999999" green="0.070583834629999995" blue="0.1225306718" alpha="0.94707899029999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buStartIntro:" destination="A3v-Hw-cbc" eventType="touchUpInside" id="k7j-LN-i21"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hourly Bell Tower" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fyq-gg-v0O">
+                                <rect key="frame" x="32.5" y="289" width="349" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Fyq-gg-v0O" secondAttribute="height" multiplier="349:54" id="lSf-NN-KWX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="45"/>
+                                <color key="textColor" red="1" green="0.92590206860000002" blue="0.58397513629999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TB9-we-ODq">
+                                <rect key="frame" x="60" y="543" width="294" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.92549019610000005" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Q8Q-YL-F0m"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <state key="normal" title="Skip Introduction">
+                                    <color key="titleColor" red="0.046350297589999999" green="0.070583834629999995" blue="0.1225306718" alpha="0.94707899029999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buSkipIntro:" destination="A3v-Hw-cbc" eventType="touchUpInside" id="gpG-8t-oWX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gb5-cX-XvY"/>
+                        <color key="backgroundColor" red="0.046350297589999999" green="0.070583834629999995" blue="0.1225306718" alpha="0.94707899029999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="TB9-we-ODq" firstAttribute="leading" secondItem="gb5-cX-XvY" secondAttribute="leading" constant="60" id="2KA-c9-nmE"/>
+                            <constraint firstItem="gb5-cX-XvY" firstAttribute="trailing" secondItem="TB9-we-ODq" secondAttribute="trailing" constant="60" id="8xb-CE-oCo"/>
+                            <constraint firstItem="TB9-we-ODq" firstAttribute="centerX" secondItem="gb5-cX-XvY" secondAttribute="centerX" id="BAx-X7-KOe"/>
+                            <constraint firstItem="rj4-3z-8g6" firstAttribute="centerX" secondItem="gb5-cX-XvY" secondAttribute="centerX" id="ERN-UJ-Xfh"/>
+                            <constraint firstItem="gb5-cX-XvY" firstAttribute="trailing" secondItem="rj4-3z-8g6" secondAttribute="trailing" constant="60" id="Sgr-hE-EVe"/>
+                            <constraint firstItem="rj4-3z-8g6" firstAttribute="leading" secondItem="gb5-cX-XvY" secondAttribute="leading" constant="60" id="W4r-Qe-yXl"/>
+                            <constraint firstItem="Fyq-gg-v0O" firstAttribute="centerX" secondItem="gb5-cX-XvY" secondAttribute="centerX" id="dIa-5k-2FO"/>
+                            <constraint firstItem="TB9-we-ODq" firstAttribute="top" secondItem="rj4-3z-8g6" secondAttribute="bottom" constant="60" id="iM6-sl-vA5"/>
+                            <constraint firstItem="rj4-3z-8g6" firstAttribute="top" secondItem="Fyq-gg-v0O" secondAttribute="bottom" constant="80" id="idM-Ct-zSv"/>
+                            <constraint firstItem="rj4-3z-8g6" firstAttribute="centerY" secondItem="gb5-cX-XvY" secondAttribute="centerY" id="xYD-R4-fQ2"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6rE-qQ-oa0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1196" y="-627"/>
+        </scene>
+        <!--Instructions View Controller-->
+        <scene sceneID="paW-BO-VoN">
+            <objects>
+                <viewController storyboardIdentifier="InstructionScreen" modalPresentationStyle="fullScreen" id="f4O-kF-2Ty" customClass="InstructionsViewController" customModule="ClockTowerBell" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hPV-7x-tf7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1s-MP-SqB">
+                                <rect key="frame" x="60" y="692" width="294" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.92549019610000005" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="LXw-VN-cgQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" red="0.046350297589999999" green="0.070583834629999995" blue="0.1225306718" alpha="0.94707899029999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8lj-ca-FEH">
+                                <rect key="frame" x="60" y="176" width="294" height="456"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8lj-ca-FEH" secondAttribute="height" multiplier="129:200" id="hn1-F1-OkZ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ENn-9y-wl5"/>
+                        <color key="backgroundColor" red="0.046350297589999999" green="0.070583834629999995" blue="0.1225306718" alpha="0.94707899029999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ENn-9y-wl5" firstAttribute="trailing" secondItem="8lj-ca-FEH" secondAttribute="trailing" constant="60" id="37Q-nJ-Ehe"/>
+                            <constraint firstItem="ENn-9y-wl5" firstAttribute="bottom" secondItem="R1s-MP-SqB" secondAttribute="bottom" constant="110" id="C8n-x3-HnM"/>
+                            <constraint firstItem="ENn-9y-wl5" firstAttribute="trailing" secondItem="R1s-MP-SqB" secondAttribute="trailing" constant="60" id="FrF-wY-boe"/>
+                            <constraint firstItem="8lj-ca-FEH" firstAttribute="leading" secondItem="ENn-9y-wl5" secondAttribute="leading" constant="60" id="L6L-As-NWe"/>
+                            <constraint firstItem="R1s-MP-SqB" firstAttribute="top" secondItem="8lj-ca-FEH" secondAttribute="bottom" constant="60" id="TeK-bZ-4Bg"/>
+                            <constraint firstItem="R1s-MP-SqB" firstAttribute="centerX" secondItem="ENn-9y-wl5" secondAttribute="centerX" id="owt-B8-U6a"/>
+                            <constraint firstItem="R1s-MP-SqB" firstAttribute="leading" secondItem="ENn-9y-wl5" secondAttribute="leading" constant="60" id="rRM-Wa-ewF"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P9m-Jz-nUD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-264" y="-627"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ClockTowerBell" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="ClockTowerBell" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

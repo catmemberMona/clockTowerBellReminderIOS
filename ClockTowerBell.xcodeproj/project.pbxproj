@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F95C0BCE264F4F6800FD3083 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95C0BCD264F4F6800FD3083 /* StartScreenViewController.swift */; };
+		F95C0BD0264F4F7A00FD3083 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95C0BCF264F4F7A00FD3083 /* InstructionsViewController.swift */; };
 		F96F451D264DABFC00773BE7 /* OnOffButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96F451C264DABFC00773BE7 /* OnOffButton.swift */; };
 		F96F4521264DB9CC00773BE7 /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96F4520264DB9CC00773BE7 /* Tower.swift */; };
 		F96F4523264DBA9100773BE7 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96F4522264DBA9100773BE7 /* Storage.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F95C0BCD264F4F6800FD3083 /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
+		F95C0BCF264F4F7A00FD3083 /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 		F96F451C264DABFC00773BE7 /* OnOffButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnOffButton.swift; sourceTree = "<group>"; };
 		F96F4520264DB9CC00773BE7 /* Tower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tower.swift; sourceTree = "<group>"; };
 		F96F4522264DBA9100773BE7 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				F9AEE3DB261FD9710086B0BA /* ViewController.swift */,
+				F95C0BCD264F4F6800FD3083 /* StartScreenViewController.swift */,
+				F95C0BCF264F4F7A00FD3083 /* InstructionsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -295,11 +301,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F95C0BCE264F4F6800FD3083 /* StartScreenViewController.swift in Sources */,
 				F96F4523264DBA9100773BE7 /* Storage.swift in Sources */,
 				F96F451D264DABFC00773BE7 /* OnOffButton.swift in Sources */,
 				F9AEE3DC261FD9710086B0BA /* ViewController.swift in Sources */,
 				F9AEE3D8261FD9710086B0BA /* AppDelegate.swift in Sources */,
 				F96F4521264DB9CC00773BE7 /* Tower.swift in Sources */,
+				F95C0BD0264F4F7A00FD3083 /* InstructionsViewController.swift in Sources */,
 				F9AEE3DA261FD9710086B0BA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
