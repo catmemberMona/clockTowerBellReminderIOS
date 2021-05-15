@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
          self.window = window
 
-         if (true){
+        if ((UserDefaults().value(forKey: "onBoarded")) == nil){
              let mainstoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
              let newViewcontroller:UIViewController = mainstoryboard.instantiateViewController(withIdentifier: "StartScreen") as! StartScreenViewController
              window.rootViewController = newViewcontroller
