@@ -96,6 +96,14 @@
                                 <state key="normal" title="Done">
                                     <color key="titleColor" red="0.046350297589999999" green="0.070583834629999995" blue="0.1225306718" alpha="0.94707899029999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="buDone:" destination="f4O-kF-2Ty" eventType="touchUpInside" id="bCS-xo-lrq"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="40Y-TU-Ljo">
                                 <rect key="frame" x="60" y="130" width="294" height="501"/>
@@ -150,6 +158,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="x8U-Lv-tBb"/>
+                    <connections>
+                        <outlet property="cvInstructions" destination="40Y-TU-Ljo" id="5ID-Ow-0L8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9m-Jz-nUD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

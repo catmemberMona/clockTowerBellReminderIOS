@@ -12,6 +12,7 @@
 		F96F451D264DABFC00773BE7 /* OnOffButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96F451C264DABFC00773BE7 /* OnOffButton.swift */; };
 		F96F4521264DB9CC00773BE7 /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96F4520264DB9CC00773BE7 /* Tower.swift */; };
 		F96F4523264DBA9100773BE7 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96F4522264DBA9100773BE7 /* Storage.swift */; };
+		F981680D2650297900185892 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F981680C2650297900185892 /* UIView.swift */; };
 		F9AEE3D8261FD9710086B0BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AEE3D7261FD9710086B0BA /* AppDelegate.swift */; };
 		F9AEE3DA261FD9710086B0BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AEE3D9261FD9710086B0BA /* SceneDelegate.swift */; };
 		F9AEE3DC261FD9710086B0BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AEE3DB261FD9710086B0BA /* ViewController.swift */; };
@@ -46,6 +47,7 @@
 		F96F451C264DABFC00773BE7 /* OnOffButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnOffButton.swift; sourceTree = "<group>"; };
 		F96F4520264DB9CC00773BE7 /* Tower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tower.swift; sourceTree = "<group>"; };
 		F96F4522264DBA9100773BE7 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		F981680C2650297900185892 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		F9AEE3D4261FD9710086B0BA /* ClockTowerBell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClockTowerBell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9AEE3D7261FD9710086B0BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9AEE3D9261FD9710086B0BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		F981680B2650294600185892 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F981680C2650297900185892 /* UIView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		F9AEE3CB261FD9710086B0BA = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +151,7 @@
 		F9AEE3D6261FD9710086B0BA /* ClockTowerBell */ = {
 			isa = PBXGroup;
 			children = (
+				F981680B2650294600185892 /* Extensions */,
 				F9AEE3D7261FD9710086B0BA /* AppDelegate.swift */,
 				F9AEE3D9261FD9710086B0BA /* SceneDelegate.swift */,
 				F9AEE3E5261FD9720086B0BA /* Info.plist */,
@@ -309,6 +320,7 @@
 				F96F4521264DB9CC00773BE7 /* Tower.swift in Sources */,
 				F95C0BD0264F4F7A00FD3083 /* InstructionsViewController.swift in Sources */,
 				F9AEE3DA261FD9710086B0BA /* SceneDelegate.swift in Sources */,
+				F981680D2650297900185892 /* UIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

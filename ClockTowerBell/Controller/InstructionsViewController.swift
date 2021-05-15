@@ -9,13 +9,16 @@ import UIKit
 
 class InstructionsViewController: UIViewController {
 
+    @IBOutlet weak var cvInstructions: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func buDone(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 
