@@ -29,9 +29,8 @@ class InstructionsViewController: UIViewController {
     }
     
     @IBAction func buDone(_ sender: Any) {
-        
+        UserDefaults().setValue("True", forKey: "onBoarded")
     }
-    
    
     
     /*

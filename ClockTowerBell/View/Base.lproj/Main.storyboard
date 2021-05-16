@@ -9,75 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Start Screen View Controller-->
-        <scene sceneID="pj4-Xi-pCS">
-            <objects>
-                <viewController storyboardIdentifier="StartScreen" id="A3v-Hw-cbc" customClass="StartScreenViewController" customModule="ClockTowerBell" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="LO2-77-ny8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rj4-3z-8g6">
-                                <rect key="frame" x="60" y="423" width="294" height="60"/>
-                                <color key="backgroundColor" red="1" green="0.92590206860000002" blue="0.58397513629999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="C6D-Yn-byk"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <state key="normal" title="Instructions">
-                                    <color key="titleColor" red="0.046350297589999999" green="0.070583834629999995" blue="0.1225306718" alpha="0.94707899029999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="buStartIntro:" destination="A3v-Hw-cbc" eventType="touchUpInside" id="k7j-LN-i21"/>
-                                    <segue destination="f4O-kF-2Ty" kind="presentation" identifier="showInstructions" modalPresentationStyle="fullScreen" id="Bdg-31-Wr1"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hourly Bell Tower" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fyq-gg-v0O">
-                                <rect key="frame" x="32.5" y="289" width="349" height="54"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Fyq-gg-v0O" secondAttribute="height" multiplier="349:54" id="lSf-NN-KWX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="45"/>
-                                <color key="textColor" red="1" green="0.92590206860000002" blue="0.58397513629999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TB9-we-ODq">
-                                <rect key="frame" x="60" y="543" width="294" height="60"/>
-                                <color key="backgroundColor" red="1" green="0.92549019610000005" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Q8Q-YL-F0m"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <state key="normal" title="Skip">
-                                    <color key="titleColor" red="0.046350297589999999" green="0.070583834629999995" blue="0.1225306718" alpha="0.94707899029999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="buSkipIntro:" destination="A3v-Hw-cbc" eventType="touchUpInside" id="gpG-8t-oWX"/>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="showMain" modalPresentationStyle="fullScreen" id="x9C-5X-qLx"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="gb5-cX-XvY"/>
-                        <color key="backgroundColor" red="0.046350297589999999" green="0.070583834629999995" blue="0.1225306718" alpha="0.94707899029999998" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="TB9-we-ODq" firstAttribute="leading" secondItem="gb5-cX-XvY" secondAttribute="leading" constant="60" id="2KA-c9-nmE"/>
-                            <constraint firstItem="gb5-cX-XvY" firstAttribute="trailing" secondItem="TB9-we-ODq" secondAttribute="trailing" constant="60" id="8xb-CE-oCo"/>
-                            <constraint firstItem="TB9-we-ODq" firstAttribute="centerX" secondItem="gb5-cX-XvY" secondAttribute="centerX" id="BAx-X7-KOe"/>
-                            <constraint firstItem="rj4-3z-8g6" firstAttribute="centerX" secondItem="gb5-cX-XvY" secondAttribute="centerX" id="ERN-UJ-Xfh"/>
-                            <constraint firstItem="gb5-cX-XvY" firstAttribute="trailing" secondItem="rj4-3z-8g6" secondAttribute="trailing" constant="60" id="Sgr-hE-EVe"/>
-                            <constraint firstItem="rj4-3z-8g6" firstAttribute="leading" secondItem="gb5-cX-XvY" secondAttribute="leading" constant="60" id="W4r-Qe-yXl"/>
-                            <constraint firstItem="Fyq-gg-v0O" firstAttribute="centerX" secondItem="gb5-cX-XvY" secondAttribute="centerX" id="dIa-5k-2FO"/>
-                            <constraint firstItem="TB9-we-ODq" firstAttribute="top" secondItem="rj4-3z-8g6" secondAttribute="bottom" constant="60" id="iM6-sl-vA5"/>
-                            <constraint firstItem="rj4-3z-8g6" firstAttribute="top" secondItem="Fyq-gg-v0O" secondAttribute="bottom" constant="80" id="idM-Ct-zSv"/>
-                            <constraint firstItem="rj4-3z-8g6" firstAttribute="centerY" secondItem="gb5-cX-XvY" secondAttribute="centerY" id="xYD-R4-fQ2"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="tti-XB-d44"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6rE-qQ-oa0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1196" y="-627"/>
-        </scene>
         <!--Instructions View Controller-->
         <scene sceneID="paW-BO-VoN">
             <objects>
@@ -87,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1s-MP-SqB">
-                                <rect key="frame" x="92" y="701.5" width="230" height="47"/>
+                                <rect key="frame" x="92" y="755" width="230" height="47"/>
                                 <color key="backgroundColor" red="1" green="0.92549019610000005" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="R1s-MP-SqB" secondAttribute="height" multiplier="49:10" id="Vul-9d-pnF"/>
@@ -103,13 +34,13 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="buDone:" destination="f4O-kF-2Ty" eventType="touchUpInside" id="bCS-xo-lrq"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="showMain" modalPresentationStyle="fullScreen" id="2ha-Vs-aj2"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="40Y-TU-Ljo">
-                                <rect key="frame" x="60" y="132.5" width="294" height="501"/>
+                                <rect key="frame" x="44" y="132.5" width="326" height="555"/>
                                 <color key="backgroundColor" red="0.046350297589999999" green="0.070583834629999995" blue="0.1225306718" alpha="0.94707899029999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="501" id="ETX-9M-H0D"/>
                                     <constraint firstAttribute="width" secondItem="40Y-TU-Ljo" secondAttribute="height" multiplier="98:167" id="zga-VC-rQN"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="HcT-cr-zDc">
@@ -120,7 +51,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InstructionsCollectionViewCell" id="qNe-mI-0j1" customClass="InstructionsCollectionViewCell" customModule="ClockTowerBell" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="294" height="501"/>
+                                        <rect key="frame" x="0.0" y="27" width="294" height="501"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3Hf-w4-t5u">
                                             <rect key="frame" x="0.0" y="0.0" width="294" height="501"/>
@@ -148,7 +79,7 @@
                                 </cells>
                             </collectionView>
                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="xGT-cR-8ic">
-                                <rect key="frame" x="146" y="653.5" width="122" height="28"/>
+                                <rect key="frame" x="146" y="707.5" width="122" height="27.5"/>
                                 <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="currentPageIndicatorTintColor" red="1" green="0.92590206860000002" blue="0.58397513629999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </pageControl>
@@ -168,6 +99,7 @@
                             <constraint firstItem="40Y-TU-Ljo" firstAttribute="top" secondItem="yIo-15-Jvc" secondAttribute="bottom" constant="15" id="HxQ-Ij-cni"/>
                             <constraint firstItem="40Y-TU-Ljo" firstAttribute="centerX" secondItem="ENn-9y-wl5" secondAttribute="centerX" id="Mjb-Sf-da6"/>
                             <constraint firstItem="xGT-cR-8ic" firstAttribute="top" secondItem="40Y-TU-Ljo" secondAttribute="bottom" constant="20" id="VAr-dN-RuW"/>
+                            <constraint firstItem="ENn-9y-wl5" firstAttribute="bottom" secondItem="R1s-MP-SqB" secondAttribute="bottom" constant="60" id="bAv-gG-52g"/>
                             <constraint firstItem="R1s-MP-SqB" firstAttribute="top" secondItem="xGT-cR-8ic" secondAttribute="bottom" constant="20" id="mon-Nz-Dfj"/>
                             <constraint firstItem="R1s-MP-SqB" firstAttribute="centerX" secondItem="ENn-9y-wl5" secondAttribute="centerX" id="nXu-h6-VAf"/>
                             <constraint firstItem="xGT-cR-8ic" firstAttribute="centerX" secondItem="ENn-9y-wl5" secondAttribute="centerX" id="q8v-pu-flS"/>
@@ -183,7 +115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9m-Jz-nUD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-265.21739130434787" y="-627.45535714285711"/>
+            <point key="canvasLocation" x="-1046" y="42"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -237,7 +169,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fum-iJ-yjo">
                                 <rect key="frame" x="60" y="166" width="324" height="324"/>
-                                <color key="backgroundColor" red="0.07246298882807603" green="0.13530198020714021" blue="0.21887844125521105" alpha="0.89000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.046350297589999999" green="0.070583834629999995" blue="0.1225306718" alpha="0.94707899029999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fum-iJ-yjo" secondAttribute="height" multiplier="1:1" id="z94-Aq-SGM"/>
                                 </constraints>
@@ -246,6 +178,11 @@
                                     <color key="titleColor" red="1" green="0.92549019607843142" blue="0.58431372549019611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="buOnOffBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KZG-FK-lZl"/>
                                 </connections>

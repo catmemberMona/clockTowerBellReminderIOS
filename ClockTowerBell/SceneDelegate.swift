@@ -18,14 +18,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-         self.window = window
-
+        self.window = window
+        let mainstoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var identifier:String = "MainScreen"
+        
         if ((UserDefaults().value(forKey: "onBoarded")) == nil){
-             let mainstoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-             let newViewcontroller:UIViewController = mainstoryboard.instantiateViewController(withIdentifier: "StartScreen") as! StartScreenViewController
-             window.rootViewController = newViewcontroller
-             window.makeKeyAndVisible()
+             identifier = "InstructionScreen"
+            
          }
+        
+        let newViewcontroller:UIViewController = mainstoryboard.instantiateViewController(withIdentifier: identifier) 
+        window.rootViewController = newViewcontroller
+        window.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
