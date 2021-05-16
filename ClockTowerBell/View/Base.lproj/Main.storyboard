@@ -147,7 +147,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="xGT-cR-8ic">
+                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="xGT-cR-8ic">
                                 <rect key="frame" x="146" y="653.5" width="122" height="28"/>
                                 <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="currentPageIndicatorTintColor" red="1" green="0.92590206860000002" blue="0.58397513629999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -178,6 +178,7 @@
                     <navigationItem key="navigationItem" id="x8U-Lv-tBb"/>
                     <connections>
                         <outlet property="cvInstructions" destination="40Y-TU-Ljo" id="5ID-Ow-0L8"/>
+                        <outlet property="pageControl" destination="xGT-cR-8ic" id="z7f-f9-dBn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9m-Jz-nUD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

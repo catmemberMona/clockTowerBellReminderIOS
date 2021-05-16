@@ -12,8 +12,10 @@ class InstructionsViewController: UIViewController {
    
 
     @IBOutlet weak var cvInstructions: UICollectionView!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     var instructions: [Instruction] = []
+    var currentPage: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +60,12 @@ extension InstructionsViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let width = scrollView.frame.width
+        currentPage = Int(scrollView.contentOffset.x / width)
+        pageControl.currentPage = currentPage
     }
     
 }
