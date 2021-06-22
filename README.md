@@ -18,12 +18,9 @@ This idea is based on bell towers used in the past, during the times when clock/
 
 ## Screenshots 
 
-![Simulator Screen Shot - iPhone 12 Pro - 2021-05-16 at 19 27 39](https://user-images.githubusercontent.com/62810761/122842343-3556b100-d2cb-11eb-87f9-ec3769d3e601.png)
-
-![Simulator Screen Shot - iPhone 11 Pro Max - 2021-05-16 at 19 48 30](https://user-images.githubusercontent.com/62810761/122842362-3be52880-d2cb-11eb-8038-171e66af1caf.png)
-
-![Simulator Screen Shot - iPhone 11 Pro Max - 2021-05-16 at 19 48 40](https://user-images.githubusercontent.com/62810761/122842368-3f78af80-d2cb-11eb-9fc6-500c9fb50c86.png)
-
+<img src="https://user-images.githubusercontent.com/62810761/122842343-3556b100-d2cb-11eb-87f9-ec3769d3e601.png" width="248"> 
+<img src="https://user-images.githubusercontent.com/62810761/122842362-3be52880-d2cb-11eb-8038-171e66af1caf.png" width="248">
+<img src="https://user-images.githubusercontent.com/62810761/122842368-3f78af80-d2cb-11eb-9fc6-500c9fb50c86.png" width="248">
 
 ## Resources 
 
